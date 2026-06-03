@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Calistoga } from "next/font/google";
+import { Calistoga, Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,8 +14,8 @@ const calistoga = Calistoga({
 });
 
 export const metadata: Metadata = {
-  title: "Lumina — AI Design Intelligence",
-  description: "AI-powered design systems, component libraries, and UX guidelines for modern product teams.",
+  title: "Olivier Dupont — Expert Vidéo LinkedIn | Human Digitalis",
+  description: "Transformez votre expertise en autorité visible sur LinkedIn. 2h de tournage, 20 vidéos stratégiques, 3× plus de prospects en 90 jours.",
 };
 
 export default function RootLayout({
@@ -24,11 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${calistoga.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="fr" className={`${inter.variable} ${calistoga.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-cream">{children}</body>
     </html>
   );
 }

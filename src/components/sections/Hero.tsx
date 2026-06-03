@@ -1,93 +1,76 @@
-import { ArrowRight, Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-amber-50">
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
+    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-[#FAF7F2]">
+      {/* Subtle texture */}
+      <div className="absolute inset-0 opacity-[0.015]"
         style={{
-          backgroundImage: "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
+          backgroundImage: "radial-gradient(circle, #1A3D2B 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
         }}
       />
-      {/* Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-amber-400/20 rounded-full blur-3xl pointer-events-none" />
+      {/* Forest glow bottom-left */}
+      <div className="absolute bottom-0 left-0 w-[500px] h-[400px] bg-[#1A3D2B]/8 rounded-full blur-3xl pointer-events-none" />
+      {/* Orange glow top-right */}
+      <div className="absolute top-24 right-0 w-[300px] h-[300px] bg-[#E8622A]/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-24 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-300 bg-amber-100 text-amber-800 text-sm font-medium mb-8">
-          <Star className="h-3.5 w-3.5 fill-amber-500 text-amber-500" />
-          Trusted by 10,000+ teams worldwide
-        </div>
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-24 w-full">
+        <div className="max-w-4xl">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#1A3D2B]/20 bg-[#1A3D2B]/5 text-[#1A3D2B] text-sm font-medium mb-10">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E8622A] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E8622A]"></span>
+            </span>
+            Juin — Seulement 2 places disponibles
+          </div>
 
-        <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-stone-900 leading-[1.1] tracking-tight mb-6">
-          Build faster with{" "}
-          <span className="text-amber-600">design intelligence</span>
-        </h1>
+          {/* Main headline */}
+          <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl text-[#1A3D2B] leading-[1.05] tracking-tight mb-6">
+            2h.{" "}
+            <span className="text-[#E8622A]">20 vidéos.</span>{" "}
+            90 jours.
+          </h1>
 
-        <p className="text-xl text-stone-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Lumina gives your team AI-powered design systems, component libraries, and UX guidelines —
-          so you ship beautiful products in days, not months.
-        </p>
+          <p className="text-xl sm:text-2xl text-[#6B6560] max-w-2xl leading-relaxed mb-4">
+            Le système qui transforme votre expertise en{" "}
+            <strong className="text-[#2C2C2C] font-semibold">autorité visible sur LinkedIn</strong>{" "}
+            — sans improviser, sans prospecter à froid.
+          </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <Button size="lg" className="w-full sm:w-auto">
-            Start for free
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-          <Button variant="outline" size="lg" className="w-full sm:w-auto">
-            See demo
-          </Button>
-        </div>
+          <p className="text-base text-[#6B6560] max-w-xl mb-12">
+            Pour coachs, consultants et experts B2B qui veulent que leurs prospects viennent à eux.
+          </p>
 
-        {/* Social proof */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-stone-500">
-          <span className="flex items-center gap-1.5">
-            <svg className="h-4 w-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-            No credit card required
-          </span>
-          <span className="flex items-center gap-1.5">
-            <svg className="h-4 w-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-            Free 14-day trial
-          </span>
-          <span className="flex items-center gap-1.5">
-            <svg className="h-4 w-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-            Cancel anytime
-          </span>
-        </div>
+          <div className="flex flex-col sm:flex-row items-start gap-4 mb-20">
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#E8622A] text-white text-lg font-semibold hover:bg-[#C94E1A] transition-all duration-200 hover:shadow-lg hover:shadow-[#E8622A]/25 cursor-pointer"
+            >
+              Réserver ma place
+              <ArrowRight className="h-5 w-5" />
+            </a>
+            <a
+              href="#systeme"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-[#1A3D2B] text-[#1A3D2B] text-lg font-semibold hover:bg-[#1A3D2B] hover:text-white transition-all duration-200 cursor-pointer"
+            >
+              Voir le système
+            </a>
+          </div>
 
-        {/* Dashboard preview */}
-        <div className="mt-20 relative">
-          <div className="relative mx-auto max-w-4xl rounded-2xl border border-stone-200 shadow-2xl shadow-stone-900/10 overflow-hidden bg-white">
-            <div className="flex items-center gap-1.5 px-4 py-3 border-b border-stone-100 bg-stone-50">
-              <div className="h-3 w-3 rounded-full bg-red-400" />
-              <div className="h-3 w-3 rounded-full bg-yellow-400" />
-              <div className="h-3 w-3 rounded-full bg-green-400" />
-              <div className="mx-auto text-xs text-stone-400 font-mono">app.lumina.dev/dashboard</div>
-            </div>
-            <div className="grid grid-cols-3 gap-4 p-6 bg-stone-50">
-              {[
-                { label: "Components", value: "2,847", change: "+12%" },
-                { label: "Design Systems", value: "143", change: "+5%" },
-                { label: "Active Users", value: "10.2k", change: "+24%" },
-              ].map((stat) => (
-                <div key={stat.label} className="rounded-xl bg-white border border-stone-200 p-4 text-left shadow-sm">
-                  <p className="text-xs text-stone-500 font-medium mb-1">{stat.label}</p>
-                  <p className="text-2xl font-bold text-stone-900">{stat.value}</p>
-                  <p className="text-xs text-green-600 font-medium mt-1">{stat.change} this month</p>
-                </div>
-              ))}
-            </div>
-            <div className="grid grid-cols-5 gap-3 px-6 pb-6 bg-stone-50">
-              {["Hero Section", "Pricing Card", "Nav Bar", "Data Table", "Modal Dialog"].map((name, i) => (
-                <div key={name} className="rounded-lg bg-white border border-stone-200 p-3 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 cursor-pointer">
-                  <div className={`h-16 rounded-md mb-2 ${["bg-amber-100", "bg-blue-100", "bg-purple-100", "bg-green-100", "bg-rose-100"][i]}`} />
-                  <p className="text-xs font-medium text-stone-700 truncate">{name}</p>
-                </div>
-              ))}
-            </div>
+          {/* Stats row */}
+          <div className="flex flex-wrap gap-8 sm:gap-16">
+            {[
+              { value: "+50", label: "experts accompagnés" },
+              { value: "3×", label: "plus de prospects en 90j" },
+              { value: "+30 ans", label: "au cœur de la communication" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <div className="font-display text-4xl text-[#1A3D2B] mb-1">{stat.value}</div>
+                <div className="text-sm text-[#6B6560]">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

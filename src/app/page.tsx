@@ -1,9 +1,11 @@
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
-import { Features } from "@/components/sections/Features";
-import { Pricing } from "@/components/sections/Pricing";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { CTA } from "@/components/sections/CTA";
+import { Probleme } from "@/components/sections/Probleme";
+import { Bento } from "@/components/sections/Bento";
+import { Systeme } from "@/components/sections/Systeme";
+import { Offres } from "@/components/sections/Offres";
+import { Apropos } from "@/components/sections/Apropos";
+import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
@@ -12,10 +14,12 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Features />
-        <Testimonials />
-        <Pricing />
-        <CTA />
+        <Probleme />
+        <Bento />
+        <Systeme />
+        <Offres />
+        <Apropos />
+        <Contact />
       </main>
       <Footer />
     </>
