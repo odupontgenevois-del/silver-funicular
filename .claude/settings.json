@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "21st-dev-magic": {
+      "command": "npx",
+      "args": ["-y", "@21st-dev/magic@latest", "API_KEY=an_sk_87c98428d89696338902fc26618f373a5bcc9066491113458d287fb8bf35c723"]
+    }
+  }
+}
