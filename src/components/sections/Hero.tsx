@@ -1,4 +1,5 @@
 import { ArrowRight, Award } from "lucide-react";
+import Image from "next/image";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
 
 const kpis = [
@@ -16,55 +17,93 @@ const situations = [
 
 export function Hero() {
   return (
-    <AuroraBackground className="min-h-screen flex items-center pt-20">
-      {/* Subtle grid */}
-      <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
-        style={{ backgroundImage: "linear-gradient(rgba(196,164,107,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(196,164,107,0.5) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+    <>
+      {/* ── Hero principal ── */}
+      <AuroraBackground className="min-h-screen flex items-center pt-20">
+        {/* Subtle grid */}
+        <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
+          style={{ backgroundImage: "linear-gradient(rgba(196,164,107,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(196,164,107,0.5) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
 
-      <div className="relative mx-auto max-w-6xl px-5 py-20 w-full">
-        <div className="grid lg:grid-cols-[1fr_420px] gap-12 lg:gap-16 items-center">
-          {/* Left */}
-          <div className="animate-fade-up">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-copper mb-10">
-              <Award className="h-3.5 w-3.5 text-[#C4A46B]" />
-              <span className="text-xs text-[#C4A46B] font-medium tracking-wide">Prix ONU 2019 · Mastère HEC Paris · 20 ans d'expérience</span>
+        <div className="relative mx-auto max-w-6xl px-5 py-20 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+            {/* Left — accroche */}
+            <div className="animate-fade-up">
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-copper mb-10">
+                <Award className="h-3.5 w-3.5 text-[#C4A46B]" />
+                <span className="text-xs text-[#C4A46B] font-medium tracking-wide">Prix ONU 2019 · Mastère HEC Paris · 20 ans d'expérience</span>
+              </div>
+
+              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.04] tracking-tight mb-6">
+                <span className="gradient-text">Vos RH méritent</span>
+                <br />
+                <span className="text-[#EDE9E3]">mieux qu'une case</span>
+                <br />
+                <span className="text-[#EDE9E3]">vide dans l'organigramme.</span>
+              </h1>
+
+              <p className="text-base text-[#9AABB8] max-w-lg leading-[1.85] mb-4">
+                Recruter un DRH en CDI coûte{" "}
+                <strong className="text-[#EDE9E3] font-medium">80 000 à 120 000 €/an</strong>,
+                3 à 6 mois de délai, et un profil rarement ajusté à votre besoin exact.
+              </p>
+              <p className="text-base text-[#C4A46B] font-display italic text-xl mb-10">
+                Il existe une troisième option.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <a href="#contact"
+                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#C4A46B] text-[#0C1B2E] text-sm font-semibold tracking-wide hover:bg-[#D4B47B] hover:shadow-lg hover:shadow-[#C4A46B]/25 transition-all duration-200 cursor-pointer">
+                  Réserver mon diagnostic
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+                <a href="#diff"
+                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full glass border border-white/10 text-sm text-[#EDE9E3] hover:bg-white/8 transition-all duration-200 cursor-pointer">
+                  Voir l'approche
+                </a>
+              </div>
+
+              <p className="text-xs text-[#9AABB8]/60 mt-4">Gratuit · 30 min · Sans engagement · Confidentiel</p>
             </div>
 
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.04] tracking-tight mb-6">
-              <span className="gradient-text">Vos RH méritent</span>
-              <br />
-              <span className="text-[#EDE9E3]">mieux qu'une case</span>
-              <br />
-              <span className="text-[#EDE9E3]">vide dans l'organigramme.</span>
-            </h1>
+            {/* Right — photo */}
+            <div className="relative animate-fade-up flex justify-center lg:justify-end" style={{ animationDelay: "0.15s" }}>
+              {/* Glow behind photo */}
+              <div className="absolute inset-0 rounded-3xl bg-[#C4A46B]/8 blur-[60px] scale-90 pointer-events-none" />
 
-            <p className="text-base text-[#9AABB8] max-w-lg leading-[1.85] mb-4">
-              Recruter un DRH en CDI coûte{" "}
-              <strong className="text-[#EDE9E3] font-medium">80 000 à 120 000 €/an</strong>,
-              3 à 6 mois de délai, et un profil rarement ajusté à votre besoin exact.
-            </p>
-            <p className="text-base text-[#C4A46B] font-display italic text-xl mb-10">
-              Il existe une troisième option.
-            </p>
+              <div className="relative w-full max-w-sm lg:max-w-none">
+                {/* Copper frame accent */}
+                <div className="absolute -inset-px rounded-3xl border border-[#C4A46B]/20 pointer-events-none z-10" />
 
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <a href="#contact"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#C4A46B] text-[#0C1B2E] text-sm font-semibold tracking-wide hover:bg-[#D4B47B] hover:shadow-lg hover:shadow-[#C4A46B]/25 transition-all duration-200 cursor-pointer">
-                Réserver mon diagnostic
-                <ArrowRight className="h-4 w-4" />
-              </a>
-              <a href="#diff"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full glass border border-white/10 text-sm text-[#EDE9E3] hover:bg-white/8 transition-all duration-200 cursor-pointer">
-                Voir l'approche
-              </a>
+                <Image
+                  src="/agnes-genevois.webp"
+                  alt="Agnès Genevois — DRH à temps partagé, fondatrice Artémis RH Consulting"
+                  width={520}
+                  height={620}
+                  className="rounded-3xl object-cover object-top w-full"
+                  style={{ maxHeight: "580px" }}
+                  priority
+                />
+
+                {/* Floating name card */}
+                <div className="absolute bottom-5 left-5 right-5 glass-copper rounded-2xl px-5 py-3 animate-float">
+                  <p className="font-display text-lg font-light text-[#EDE9E3]">Agnès Genevois</p>
+                  <p className="text-[11px] text-[#C4A46B] tracking-wide">DRH à temps partagé · Fondatrice Artémis RH Consulting</p>
+                </div>
+              </div>
             </div>
-
-            <p className="text-xs text-[#9AABB8]/60 mt-4">Gratuit · 30 min · Sans engagement · Confidentiel</p>
           </div>
+        </div>
 
-          {/* Right — glass card */}
-          <div className="flex flex-col gap-4 animate-fade-up" style={{ animationDelay: "0.15s" }}>
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0C1B2E] to-transparent pointer-events-none" />
+      </AuroraBackground>
+
+      {/* ── Strip KPIs + situation selector ── */}
+      <section className="bg-[#0C1B2E] border-b border-white/7">
+        <div className="mx-auto max-w-6xl px-5 py-8">
+          <div className="grid lg:grid-cols-[1fr_1fr] gap-6 items-stretch">
+
             {/* KPI cards */}
             <div className="grid grid-cols-3 gap-3">
               {kpis.map((k) => (
@@ -83,26 +122,16 @@ export function Hero() {
               </div>
               {situations.map((s) => (
                 <a key={s} href="#contact"
-                  className="flex items-center justify-between px-5 py-3.5 text-sm text-[#9AABB8] border-b border-white/5 last:border-0 hover:bg-white/5 hover:text-[#EDE9E3] hover:pl-6 transition-all duration-200 cursor-pointer group">
+                  className="flex items-center justify-between px-5 py-3 text-sm text-[#9AABB8] border-b border-white/5 last:border-0 hover:bg-white/5 hover:text-[#EDE9E3] hover:pl-6 transition-all duration-200 cursor-pointer group">
                   {s}
                   <ArrowRight className="h-3.5 w-3.5 text-[#C4A46B] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                 </a>
               ))}
             </div>
 
-            {/* Pull quote */}
-            <div className="glass-copper rounded-2xl px-5 py-4 animate-float">
-              <p className="font-display text-base italic text-[#EDE9E3] leading-[1.55]">
-                "Ce n'est pas parce qu'on ne peut pas se permettre un DRH à plein temps qu'on doit se priver d'une <em className="text-[#C4A46B]">experte.</em>"
-              </p>
-              <p className="text-[11px] text-[#9AABB8] mt-2">— Agnès Genevois · Fondatrice</p>
-            </div>
           </div>
         </div>
-      </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0C1B2E] to-transparent pointer-events-none" />
-    </AuroraBackground>
+      </section>
+    </>
   );
 }
