@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const stats = [
   { value: "−25%", label: "Turnover postes clés", source: "Camfil 2017–2023" },
   { value: "−30%", label: "Time-to-fill", source: "Camfil 2017–2023" },
@@ -60,12 +62,31 @@ export function Apropos() {
             </div>
           </div>
 
-          {/* Stats grid */}
-          <div>
-            <div className="grid grid-cols-2 gap-4 mb-6">
+          {/* Photo + stats */}
+          <div className="flex flex-col gap-4">
+            {/* Photo */}
+            <div className="relative rounded-2xl overflow-hidden h-64 sm:h-80">
+              <Image
+                src="/photo-dirigeante.jpg"
+                alt="Leadership en entreprise — DRH en action"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 576px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C1B2E]/70 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-5 right-5">
+                <p className="font-display text-sm italic text-[#EDE9E3]/90 leading-[1.5]">
+                  "Lire une organisation avant que ça casse —{" "}
+                  <em className="text-[#C4A46B]">c'est ça le métier.</em>"
+                </p>
+              </div>
+            </div>
+
+            {/* Stats grid */}
+            <div className="grid grid-cols-2 gap-4">
               {stats.map((s) => (
-                <div key={s.label} className="glass-copper rounded-2xl p-6 hover:-translate-y-1 transition-transform duration-300">
-                  <div className="font-display text-4xl font-light text-[#C4A46B] leading-none mb-2">{s.value}</div>
+                <div key={s.label} className="glass-copper rounded-2xl p-5 hover:-translate-y-1 transition-transform duration-300">
+                  <div className="font-display text-3xl font-light text-[#C4A46B] leading-none mb-2">{s.value}</div>
                   <div className="text-xs font-medium text-[#EDE9E3] mb-1">{s.label}</div>
                   <div className="text-[10px] text-[#9AABB8] italic">{s.source}</div>
                 </div>
@@ -73,11 +94,11 @@ export function Apropos() {
             </div>
 
             {/* Award */}
-            <div className="glass rounded-2xl px-6 py-5 flex items-center gap-5">
-              <div className="font-display text-5xl font-light text-[#C4A46B] flex-shrink-0">2019</div>
+            <div className="glass rounded-2xl px-5 py-4 flex items-center gap-4">
+              <div className="font-display text-4xl font-light text-[#C4A46B] flex-shrink-0">2019</div>
               <div>
-                <div className="text-sm font-semibold text-[#EDE9E3] mb-1">Prix des Nations Unies · New York</div>
-                <p className="text-xs text-[#9AABB8] leading-[1.6]">Engagement diversité femmes/industrie et inclusion des jeunes. 17 pays sur 3 continents.</p>
+                <div className="text-sm font-semibold text-[#EDE9E3] mb-0.5">Prix des Nations Unies · New York</div>
+                <p className="text-xs text-[#9AABB8] leading-[1.6]">Engagement diversité femmes/industrie. 17 pays sur 3 continents.</p>
               </div>
             </div>
           </div>

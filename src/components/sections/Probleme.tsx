@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const pains = [
   { titre: "Vous venez de racheter une société", desc: "Les pratiques RH divergent, les équipes attendent. Personne ne pilote l'harmonisation.", cout: "Retard d'intégration : 12 à 18 mois en moyenne" },
   { titre: "Votre turnover s'accélère", desc: "Sur les profils que vous ne pouvez pas vous permettre de perdre. Et vous ne savez pas vraiment pourquoi.", cout: "6 à 18 mois de salaire brut par départ cadre" },
@@ -13,8 +15,33 @@ export function Probleme() {
       <div className="absolute inset-0 bg-gradient-to-b from-[#0C1B2E] via-[#0E1F35] to-[#0C1B2E] pointer-events-none" />
 
       <div className="relative mx-auto max-w-6xl px-5">
-        {/* Header */}
-        <div className="max-w-2xl mb-14">
+        {/* Photo banner */}
+        <div className="relative rounded-2xl overflow-hidden mb-14 h-56 sm:h-72">
+          <Image
+            src="/photo-reunion-equipe.jpg"
+            alt="Réunion d'équipe — gestion RH complexe"
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 768px) 100vw, 1152px"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0C1B2E]/85 via-[#0C1B2E]/40 to-transparent" />
+          <div className="absolute inset-0 flex items-center px-8 sm:px-12">
+            <div className="max-w-xl">
+              <div className="inline-flex items-center gap-2 mb-4">
+                <div className="h-px w-8 bg-[#C4A46B]" />
+                <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#C4A46B]">Reconnaissez-vous votre situation ?</span>
+              </div>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-light text-[#EDE9E3] leading-[1.12] mb-2">
+                Les signaux qui coûtent{" "}
+                <em className="text-[#C4A46B]">chaque mois</em> qu'ils durent.
+              </h2>
+              <p className="text-sm text-[#9AABB8] hidden sm:block">Chaque point a un coût réel, souvent sous-estimé jusqu'à ce qu'il soit trop tard.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Header (mobile only — hidden on sm+) */}
+        <div className="max-w-2xl mb-14 sm:hidden">
           <div className="inline-flex items-center gap-2 mb-5">
             <div className="h-px w-8 bg-[#C4A46B]" />
             <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#C4A46B]">Reconnaissez-vous votre situation ?</span>
