@@ -57,6 +57,34 @@ body {
   background-clip: text;
 }
 
+/* Aurora Background */
+@keyframes aurora {
+  0%   { background-position: 0% 50%, 50% 0%, 100% 50%, 50% 100%; }
+  25%  { background-position: 50% 0%, 100% 50%, 50% 100%, 0% 50%; }
+  50%  { background-position: 100% 50%, 50% 100%, 0% 50%, 50% 0%; }
+  75%  { background-position: 50% 100%, 0% 50%, 50% 0%, 100% 50%; }
+  100% { background-position: 0% 50%, 50% 0%, 100% 50%, 50% 100%; }
+}
+
+.aurora-bg {
+  --aurora-1: #C4A46B;
+  --aurora-2: #1A4080;
+  --aurora-3: #0C2A50;
+  --aurora-4: #9C7E4F;
+  position: absolute;
+  inset: -200px;
+  background:
+    radial-gradient(ellipse 80% 80% at 20% 40%, rgba(196,164,107,0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(26,64,128,0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 60% at 60% 80%, rgba(12,42,80,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 60% at 40% 60%, rgba(156,126,79,0.08) 0%, transparent 70%);
+  background-size: 200% 200%, 180% 180%, 220% 220%, 160% 160%;
+  animation: aurora 12s ease infinite;
+  filter: blur(40px);
+  pointer-events: none;
+  will-change: background-position;
+}
+
 /* Animations */
 @keyframes blob {
   0%, 100% { transform: translate(0, 0) scale(1); }

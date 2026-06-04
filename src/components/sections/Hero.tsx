@@ -1,4 +1,5 @@
 import { ArrowRight, Award } from "lucide-react";
+import { AuroraBackground } from "@/components/ui/AuroraBackground";
 
 const kpis = [
   { value: "−25%", label: "Turnover postes clés", sub: "Camfil 2017–2023" },
@@ -15,16 +16,9 @@ const situations = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
-      {/* Animated background blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[#C4A46B]/8 blur-[120px] animate-blob" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[#1A4080]/30 blur-[100px] animate-blob-delay" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#0C2A50]/40 blur-[140px]" />
-      </div>
-
+    <AuroraBackground className="min-h-screen flex items-center pt-20">
       {/* Subtle grid */}
-      <div className="absolute inset-0 opacity-[0.025]"
+      <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{ backgroundImage: "linear-gradient(rgba(196,164,107,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(196,164,107,0.5) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
 
       <div className="relative mx-auto max-w-6xl px-5 py-20 w-full">
@@ -109,6 +103,6 @@ export function Hero() {
 
       {/* Bottom fade */}
       <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0C1B2E] to-transparent pointer-events-none" />
-    </section>
+    </AuroraBackground>
   );
 }
