@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
-import { Calistoga, Inter } from "next/font/google";
+import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
 });
 
-const calistoga = Calistoga({
-  variable: "--font-calistoga",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["300", "400", "600"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
-  title: "Olivier Dupont — Expert Vidéo LinkedIn | Human Digitalis",
-  description: "Transformez votre expertise en autorité visible sur LinkedIn. 2h de tournage, 20 vidéos stratégiques, 3× plus de prospects en 90 jours.",
+  title: "Agnès Genevois · Artémis RH Consulting — DRH à temps partagé",
+  description: "Vos RH n'ont pas besoin d'un poste permanent. La bonne experte, au bon moment. 20 ans de DRH opérationnelle en industrie et ETI.",
 };
 
 export default function RootLayout({
@@ -24,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${inter.variable} ${calistoga.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-cream">{children}</body>
+    <html lang="fr" className={`${jost.variable} ${cormorant.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

@@ -1,76 +1,89 @@
 import { ArrowRight } from "lucide-react";
 
+const situations = [
+  "Post-acquisition ou intégration en cours",
+  "PME sans DRH, je gère en direct",
+  "Turnover ou crise sociale à gérer",
+  "Croissance rapide, les process ne suivent pas",
+];
+
+const kpis = [
+  { value: "-25%", label: "Turnover sur postes clés après restructuration RH", source: "Camfil France · 2017–2023" },
+  { value: "-30%", label: "Time-to-fill sur postes critiques", source: "Camfil France · 2017–2023" },
+  { value: "20 ans", label: "De DRH opérationnelle en industrie et ETI internationales", source: "PANOL · Morgan · Camfil · RIOU · Diasorin" },
+];
+
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-[#FAF7F2]">
-      {/* Subtle texture */}
-      <div className="absolute inset-0 opacity-[0.015]"
-        style={{
-          backgroundImage: "radial-gradient(circle, #1A3D2B 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
-      {/* Forest glow bottom-left */}
-      <div className="absolute bottom-0 left-0 w-[500px] h-[400px] bg-[#1A3D2B]/8 rounded-full blur-3xl pointer-events-none" />
-      {/* Orange glow top-right */}
-      <div className="absolute top-24 right-0 w-[300px] h-[300px] bg-[#E8622A]/10 rounded-full blur-3xl pointer-events-none" />
+    <section className="pt-16 border-b border-[#DCD9D2]">
+      <div className="mx-auto max-w-5xl px-5 py-16 sm:py-24">
+        {/* Badges */}
+        <div className="flex flex-wrap items-center gap-3 mb-10">
+          <span className="inline-block bg-[#B89968] text-[#0F3D6A] text-[10px] font-medium tracking-[0.14em] uppercase px-3 py-1.5">Prix ONU 2019</span>
+          <span className="text-xs text-[#7A8FA6]">Mastère HEC Paris · 20 ans de terrain en industrie et ETI</span>
+        </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-24 w-full">
-        <div className="max-w-4xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#1A3D2B]/20 bg-[#1A3D2B]/5 text-[#1A3D2B] text-sm font-medium mb-10">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E8622A] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E8622A]"></span>
-            </span>
-            Juin — Seulement 2 places disponibles
+        <div className="grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-start">
+          {/* Left */}
+          <div>
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-light text-[#0F3D6A] leading-[1.05] tracking-[-0.02em] mb-4">
+              Vos RH n'ont pas besoin<br />d'un poste permanent.
+            </h1>
+            <p className="font-display text-xl sm:text-2xl font-light italic text-[#3F5673] mb-8">
+              <strong className="not-italic font-normal text-[#0F3D6A]">La bonne experte.</strong> Au bon moment.
+            </p>
+
+            <p className="text-sm text-[#3F5673] leading-[1.9] mb-8 max-w-xl">
+              Vous dirigez une PME ou une ETI industrielle. Une situation RH vous prend du temps, vous expose ou ralentit votre organisation.<br /><br />
+              <strong className="text-[#0F3D6A] font-medium">Recruter un DRH en CDI coûte entre 80 000 et 120 000 euros par an, charges comprises.</strong> Passer par un cabinet généraliste vous donne un consultant, pas quelqu'un qui pilote.<br /><br />
+              Il existe une troisième option.
+            </p>
+
+            {/* Situation selector */}
+            <div className="border border-[#DCD9D2] bg-white mb-8" id="situation">
+              <div className="text-[10px] font-medium tracking-[0.16em] uppercase text-[#B89968] px-4 py-3 border-b border-[#DCD9D2] bg-[#EFE6D4]">
+                Votre situation
+              </div>
+              {situations.map((s) => (
+                <a key={s} href="#contact" className="flex justify-between items-center w-full px-4 py-3.5 text-sm text-[#3F5673] border-b border-[#DCD9D2] last:border-0 hover:bg-[#EFE6D4] hover:text-[#0F3D6A] hover:border-l-2 hover:border-l-[#B89968] transition-all duration-150 cursor-pointer group">
+                  {s}
+                  <ArrowRight className="h-3.5 w-3.5 text-[#B89968] flex-shrink-0 ml-4 group-hover:translate-x-0.5 transition-transform" />
+                </a>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <a href="#contact" className="block w-full bg-[#0F3D6A] text-[#FAF7F1] text-xs font-medium tracking-[0.14em] uppercase py-4 text-center hover:bg-[#9C7E4F] transition-colors duration-200 cursor-pointer">
+                Réserver mon diagnostic de 30 min
+              </a>
+              <a href="#diff" className="block w-full border border-[#DCD9D2] text-[#0F3D6A] text-xs font-medium tracking-[0.12em] uppercase py-4 text-center hover:border-[#0F3D6A] transition-colors duration-200 cursor-pointer">
+                Voir les contextes d'intervention
+              </a>
+              <p className="text-[11px] text-[#7A8FA6] text-center">Gratuit. Sans engagement. Ce que vous partagez reste confidentiel.</p>
+            </div>
           </div>
 
-          {/* Main headline */}
-          <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl text-[#1A3D2B] leading-[1.05] tracking-tight mb-6">
-            2h.{" "}
-            <span className="text-[#E8622A]">20 vidéos.</span>{" "}
-            90 jours.
-          </h1>
-
-          <p className="text-xl sm:text-2xl text-[#6B6560] max-w-2xl leading-relaxed mb-4">
-            Le système qui transforme votre expertise en{" "}
-            <strong className="text-[#2C2C2C] font-semibold">autorité visible sur LinkedIn</strong>{" "}
-            — sans improviser, sans prospecter à froid.
-          </p>
-
-          <p className="text-base text-[#6B6560] max-w-xl mb-12">
-            Pour coachs, consultants et experts B2B qui veulent que leurs prospects viennent à eux.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-start gap-4 mb-20">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#E8622A] text-white text-lg font-semibold hover:bg-[#C94E1A] transition-all duration-200 hover:shadow-lg hover:shadow-[#E8622A]/25 cursor-pointer"
-            >
-              Réserver ma place
-              <ArrowRight className="h-5 w-5" />
-            </a>
-            <a
-              href="#systeme"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-[#1A3D2B] text-[#1A3D2B] text-lg font-semibold hover:bg-[#1A3D2B] hover:text-white transition-all duration-200 cursor-pointer"
-            >
-              Voir le système
-            </a>
-          </div>
-
-          {/* Stats row */}
-          <div className="flex flex-wrap gap-8 sm:gap-16">
-            {[
-              { value: "+50", label: "experts accompagnés" },
-              { value: "3×", label: "plus de prospects en 90j" },
-              { value: "+30 ans", label: "au cœur de la communication" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div className="font-display text-4xl text-[#1A3D2B] mb-1">{stat.value}</div>
-                <div className="text-sm text-[#6B6560]">{stat.label}</div>
+          {/* Right — KPIs */}
+          <div className="flex flex-col gap-3">
+            {kpis.map((k) => (
+              <div key={k.value} className="bg-[#EFE6D4] border-l-2 border-[#B89968] px-5 py-5">
+                <div className="font-display text-4xl font-light text-[#0F3D6A] leading-none mb-1">{k.value}</div>
+                <div className="text-xs text-[#3F5673] leading-[1.5] mt-1">{k.label}</div>
+                <div className="text-[10px] text-[#7A8FA6] mt-1 italic">{k.source}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Pull quote */}
+      <div className="border-t border-b border-[#DCD9D2] px-5 py-6">
+        <div className="mx-auto max-w-5xl flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-12">
+          <p className="font-display text-lg sm:text-xl font-light italic text-[#0F3D6A] leading-[1.55] flex-1">
+            "Ce n'est pas parce qu'on ne peut pas se permettre un DRH à plein temps qu'on doit se priver d'une <em className="text-[#B89968]">experte.</em>"
+          </p>
+          <div className="text-xs text-[#7A8FA6] sm:text-right flex-shrink-0">
+            Agnès Genevois<br />Fondatrice · Artémis RH Consulting
           </div>
         </div>
       </div>

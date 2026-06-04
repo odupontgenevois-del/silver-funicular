@@ -1,10 +1,10 @@
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { Probleme } from "@/components/sections/Probleme";
-import { Bento } from "@/components/sections/Bento";
+import { Diff } from "@/components/sections/Bento";
+import { Apropos } from "@/components/sections/Apropos";
 import { Systeme } from "@/components/sections/Systeme";
 import { Offres } from "@/components/sections/Offres";
-import { Apropos } from "@/components/sections/Apropos";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 
@@ -15,10 +15,10 @@ export default function Home() {
       <main>
         <Hero />
         <Probleme />
-        <Bento />
+        <Diff />
+        <Apropos />
         <Systeme />
         <Offres />
-        <Apropos />
         <Contact />
       </main>
       <Footer />

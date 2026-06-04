@@ -1,122 +1,98 @@
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const offres = [
   {
-    titre: "One-to-One Stratégique",
-    accroche: "L'accompagnement le plus personnalisé",
-    desc: "Un suivi individuel complet pour installer une présence vidéo cohérente, alignée avec vos objectifs business. Idéal si vous voulez être guidé de A à Z.",
-    inclus: [
-      "Cadrage stratégique complet",
-      "20 vidéos tournées & montées",
-      "Plan éditorial 2 mois",
-      "Suivi hebdomadaire",
-      "Accès WhatsApp direct",
-    ],
-    cta: "En savoir plus",
-    accent: false,
+    label: "Diagnostic",
+    titre: "Audit RH",
+    sub: "Pour clarifier votre situation avant de prendre une décision.",
+    items: ["Audit social et organisationnel", "Identification des risques", "Cartographie des compétences critiques", "Restitution avec plan d'action priorisé"],
+    cta: "Demander un devis",
+    featured: false,
   },
   {
-    titre: "Conseil & Production Clé en Main",
-    accroche: "Vous parlez. Je m'occupe du reste.",
-    desc: "De la conception du script à la diffusion finale. Vous apportez votre expertise, je gère la production professionnelle et la stratégie de contenu.",
-    inclus: [
-      "Script & storytelling",
-      "Tournage guidé (2h)",
-      "Montage pro + sous-titres",
-      "Calendrier de diffusion",
-      "Optimisation LinkedIn",
-    ],
-    cta: "Réserver ma place",
-    accent: true,
-    badge: "Le plus populaire",
+    label: "Le plus demandé",
+    badge: true,
+    titre: "Mission récurrente",
+    sub: "DRH à temps partagé · Présence régulière. Pilotage complet. Reporting DG.",
+    items: ["Présence sur site (fréquence adaptée)", "Pilotage RH complet ou ciblé", "Relations sociales et IRP", "Conformité et obligations légales", "Développement talents et management", "Reporting CODIR"],
+    cta: "Réserver un diagnostic gratuit",
+    featured: true,
   },
   {
-    titre: "MasterClass Sélective",
-    accroche: "Apprenez à produire vous-même",
-    desc: "Sessions dynamiques et concrètes pour maîtriser la production vidéo LinkedIn en autonomie. Format groupe restreint pour un apprentissage intensif.",
-    inclus: [
-      "Méthode complète filmée",
-      "Templates scripts prêts",
-      "Feedback sur vos vidéos",
-      "Accès communauté privée",
-      "Replays illimités",
-    ],
-    cta: "Rejoindre la prochaine",
-    accent: false,
+    label: "Mission ponctuelle",
+    titre: "Accompagnement projet",
+    sub: "Pour une transformation délimitée dans le temps.",
+    items: ["Post-acquisition ou intégration", "Négociation accord collectif", "Structuration fonction RH", "Déploiement SIRH", "Harmonisation multi-sites"],
+    cta: "Demander un devis",
+    featured: false,
   },
 ];
 
 export function Offres() {
   return (
-    <section id="offres" className="py-24 bg-[#1A3D2B]">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mb-16">
-          <p className="text-[#E8622A] text-sm font-semibold uppercase tracking-widest mb-4">Les offres</p>
-          <h2 className="font-display text-4xl sm:text-5xl text-white max-w-xl leading-tight">
-            Choisissez votre niveau d'accompagnement.
-          </h2>
+    <section id="tarifs" className="py-16 sm:py-24 border-t border-[#DCD9D2]">
+      <div className="mx-auto max-w-5xl px-5">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-7 h-px bg-[#B89968]" />
+          <span className="text-[10px] font-medium tracking-[0.18em] uppercase text-[#B89968]">Modalités d'intervention</span>
+        </div>
+        <h2 className="font-display text-3xl sm:text-4xl font-light text-[#0F3D6A] mb-2 leading-[1.18]">
+          Trois façons de travailler ensemble.
+        </h2>
+
+        {/* Anchor */}
+        <div className="border-l-2 border-[#B89968] pl-4 py-2 bg-[#EFE6D4] mb-10 mt-6">
+          <p className="text-xs text-[#3F5673] leading-[1.7]">
+            <strong className="text-[#0F3D6A] font-medium">Repère :</strong> un DRH en CDI représente entre 80 000 et 120 000 euros de coût total annuel, charges comprises, hors période de recrutement de 3 à 6 mois. Une mission à temps partagé se calibre sur votre besoin réel, sans coût fixe subi.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-3 gap-px bg-[#DCD9D2]">
           {offres.map((o) => (
-            <div
-              key={o.titre}
-              className={`relative rounded-2xl p-7 flex flex-col ${o.accent ? "bg-[#E8622A]" : "bg-white/5 border border-white/10"}`}
-            >
+            <div key={o.titre} className={`flex flex-col p-7 ${o.featured ? "bg-[#0F3D6A]" : "bg-[#FAF7F1]"}`}>
               {o.badge && (
-                <div className="absolute -top-3.5 left-6 px-4 py-1 bg-white text-[#E8622A] text-xs font-bold rounded-full">
-                  {o.badge}
-                </div>
+                <span className="inline-block bg-[#B89968] text-[#0F3D6A] text-[10px] font-medium tracking-[0.12em] uppercase px-3 py-1 mb-4 self-start">
+                  {o.label}
+                </span>
               )}
-
-              <div className="mb-6">
-                <p className={`text-xs font-semibold uppercase tracking-widest mb-2 ${o.accent ? "text-white/70" : "text-white/40"}`}>
-                  {o.accroche}
-                </p>
-                <h3 className="text-xl font-bold text-white mb-3">{o.titre}</h3>
-                <p className={`text-sm leading-relaxed ${o.accent ? "text-white/80" : "text-white/60"}`}>{o.desc}</p>
-              </div>
-
-              <ul className="space-y-2.5 flex-1 mb-8">
-                {o.inclus.map((item) => (
-                  <li key={item} className="flex items-center gap-2.5 text-sm">
-                    <Check className={`h-4 w-4 flex-shrink-0 ${o.accent ? "text-white" : "text-[#E8622A]"}`} />
-                    <span className={o.accent ? "text-white/90" : "text-white/70"}>{item}</span>
+              {!o.badge && (
+                <div className={`text-[10px] tracking-[0.14em] uppercase mb-4 ${o.featured ? "text-[#B89968]" : "text-[#7A8FA6]"}`}>{o.label}</div>
+              )}
+              <div className={`font-display text-xl font-light mb-1 ${o.featured ? "text-[#FAF7F1]" : "text-[#0F3D6A]"}`}>{o.titre}</div>
+              <div className={`text-xs mb-6 leading-[1.6] ${o.featured ? "text-[#EFE6D4]/60" : "text-[#7A8FA6]"}`}>{o.sub}</div>
+              <ul className="flex flex-col gap-2 flex-1 mb-7">
+                {o.items.map((item) => (
+                  <li key={item} className={`text-xs leading-[1.5] flex items-start gap-2 ${o.featured ? "text-[#EFE6D4]/75" : "text-[#3F5673]"}`}>
+                    <span className="text-[#B89968] flex-shrink-0 mt-0.5">—</span>
+                    {item}
                   </li>
                 ))}
               </ul>
-
-              <a
-                href="#contact"
-                className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                  o.accent
-                    ? "bg-white text-[#E8622A] hover:bg-white/90"
-                    : "border border-white/30 text-white hover:bg-white/10"
-                }`}
-              >
+              <a href="#contact" className={`text-center text-[10px] font-medium tracking-[0.12em] uppercase py-3 transition-colors cursor-pointer flex items-center justify-center gap-2 ${
+                o.featured
+                  ? "bg-[#B89968] text-[#0F3D6A] hover:bg-[#9C7E4F]"
+                  : "border border-[#DCD9D2] text-[#0F3D6A] hover:bg-[#0F3D6A] hover:text-[#FAF7F1] hover:border-[#0F3D6A]"
+              }`}>
                 {o.cta}
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-3 w-3" />
               </a>
             </div>
           ))}
         </div>
 
-        {/* Offres secondaires */}
-        <div className="mt-8 grid md:grid-cols-2 gap-5">
-          {[
-            { titre: "Aimant à Clients", desc: "Structurer vos contenus pour attirer vos prospects idéaux et déclencher des conversations qualifiées sans effort." },
-            { titre: "Marque Personnelle", desc: "Clarification de vos messages, positionnement précis et plan d'action pour devenir une référence incontestable dans votre domaine." },
-          ].map((o) => (
-            <div key={o.titre} className="rounded-2xl p-6 bg-white/5 border border-white/10 flex items-center gap-6">
-              <div>
-                <h4 className="font-semibold text-white mb-1">{o.titre}</h4>
-                <p className="text-sm text-white/60 leading-relaxed">{o.desc}</p>
-              </div>
-              <a href="#contact" className="flex-shrink-0 p-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors cursor-pointer">
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-          ))}
+        <p className="text-xs text-[#7A8FA6] text-center mt-5 leading-[1.65]">
+          Tous les montants sont définis sur devis après diagnostic. Votre contexte détermine la formule et son dimensionnement.
+        </p>
+
+        {/* Scarcity bar */}
+        <div className="bg-[#B89968] px-6 py-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mt-6">
+          <p className="font-display text-base text-[#0F3D6A] leading-[1.4]">
+            <strong>2 créneaux disponibles</strong> pour une mission démarrant en juillet 2026.
+            <br /><span className="font-light text-sm">Les missions sont limitées pour garantir la qualité d'engagement sur chaque dossier.</span>
+          </p>
+          <a href="#contact" className="flex-shrink-0 bg-[#0F3D6A] text-[#FAF7F1] text-[10px] font-medium tracking-[0.12em] uppercase px-5 py-3 hover:opacity-85 transition-opacity cursor-pointer whitespace-nowrap">
+            Réserver mon diagnostic
+          </a>
         </div>
       </div>
     </section>

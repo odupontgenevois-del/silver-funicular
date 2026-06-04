@@ -1,77 +1,102 @@
-import { Video, Link, Target, TrendingUp } from "lucide-react";
+import { Check, X } from "lucide-react";
 
-const cards = [
+const cols = [
   {
-    icon: Video,
-    title: "Pourquoi la vidéo ?",
-    body: "La vidéo génère 5× plus d'engagement que le texte sur LinkedIn. Elle humanise votre expertise, installe la confiance avant même le premier rendez-vous.",
-    size: "md:col-span-2 md:row-span-1",
-    bg: "bg-[#1A3D2B]",
-    text: "text-white",
-    muted: "text-white/60",
-    iconBg: "bg-white/10 text-white",
+    label: "Option 1",
+    name: "DRH interne en CDI",
+    featured: false,
+    items: [
+      { text: "Présence quotidienne", ok: true },
+      { text: "80 000 à 120 000 €/an charges comprises", ok: false },
+      { text: "Recrutement : 3 à 6 mois avant démarrage", ok: false },
+      { text: "Profil rarement ajusté au besoin exact", ok: false },
+      { text: "Biais politique interne inévitable", ok: false },
+    ],
   },
   {
-    icon: Link,
-    title: "Pourquoi LinkedIn ?",
-    body: "4 décideurs B2B sur 5 sont actifs sur LinkedIn. C'est le seul réseau où votre contenu touche directement vos prospects idéaux — sans publicité.",
-    size: "md:col-span-1 md:row-span-1",
-    bg: "bg-[#FAF7F2]",
-    text: "text-[#1A3D2B]",
-    muted: "text-[#6B6560]",
-    iconBg: "bg-[#1A3D2B]/10 text-[#1A3D2B]",
+    label: "Option 2 · Artémis RH",
+    name: "La bonne experte. Au bon moment.",
+    featured: true,
+    badge: "Le bon choix",
+    items: [
+      { text: "20 ans d'expérience, industrie et ETI", ok: true },
+      { text: "Coût calibré sur votre besoin réel", ok: true },
+      { text: "Démarrage en moins d'une semaine", ok: true },
+      { text: "Regard extérieur, sans biais politique", ok: true },
+      { text: "Résultats mesurés, sourcés, vérifiables", ok: true },
+    ],
   },
   {
-    icon: Target,
-    title: "Pourquoi maintenant ?",
-    body: "Le reach organique vidéo LinkedIn est au sommet. Dans 18 mois, il sera aussi saturé qu'Instagram. Les premiers à structurer leur présence raflent les opportunités.",
-    size: "md:col-span-1 md:row-span-1",
-    bg: "bg-[#E8622A]",
-    text: "text-white",
-    muted: "text-white/70",
-    iconBg: "bg-white/20 text-white",
-  },
-  {
-    icon: TrendingUp,
-    title: "Pourquoi Olivier Dupont ?",
-    body: "+30 ans au cœur de la communication. Chef Pub chez SeLoger et Logic Immo (17 ans). +50 experts B2B accompagnés. Un système éprouvé, pas une promesse.",
-    size: "md:col-span-2 md:row-span-1",
-    bg: "bg-[#FAF7F2]",
-    text: "text-[#1A3D2B]",
-    muted: "text-[#6B6560]",
-    iconBg: "bg-[#E8622A]/10 text-[#E8622A]",
+    label: "Option 3",
+    name: "Cabinet de conseil RH",
+    featured: false,
+    items: [
+      { text: "Expertise thématique disponible", ok: true },
+      { text: "Consultant, pas un pilote opérationnel", ok: false },
+      { text: "Facturation à la journée, coût variable élevé", ok: false },
+      { text: "Peu d'ancrage dans votre réalité terrain", ok: false },
+      { text: "Pas de responsabilité sur les résultats", ok: false },
+    ],
   },
 ];
 
-export function Bento() {
+const badges = [
+  { text: "Prix ONU · New York 2019" },
+  { text: "Mastère HEC Paris" },
+  { text: "20 ans · Industrie & ETI" },
+  { text: "15 pays · EMEA" },
+  { text: "Membre de CODIR" },
+];
+
+export function Diff() {
   return (
-    <section className="py-24 bg-[#FAF7F2]">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mb-14">
-          <p className="text-[#E8622A] text-sm font-semibold uppercase tracking-widest mb-4">Pourquoi ça marche</p>
-          <h2 className="font-display text-4xl sm:text-5xl text-[#1A3D2B] max-w-xl leading-tight">
-            4 raisons que personne ne conteste.
-          </h2>
+    <section id="diff" className="py-16 sm:py-24 bg-white border-t border-[#DCD9D2]">
+      <div className="mx-auto max-w-5xl px-5">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-7 h-px bg-[#B89968]" />
+          <span className="text-[10px] font-medium tracking-[0.18em] uppercase text-[#B89968]">Pourquoi le temps partagé</span>
+        </div>
+        <h2 className="font-display text-3xl sm:text-4xl font-light text-[#0F3D6A] leading-[1.18] mb-1">
+          Trois options. Une seule qui{" "}
+          <em className="text-[#B89968]">combine</em> les deux.
+        </h2>
+        <p className="text-sm text-[#7A8FA6] mb-10">Expertise et coût maîtrisé. Comparaison objective.</p>
+
+        <div className="grid md:grid-cols-3 gap-px bg-[#DCD9D2]">
+          {cols.map((col) => (
+            <div key={col.label} className={`p-7 flex flex-col ${col.featured ? "bg-[#EFE6D4] border-t-2 border-t-[#B89968]" : "bg-[#FAF7F1] border-t-2 border-t-[#DCD9D2]"}`}>
+              {col.badge && (
+                <span className="inline-block bg-[#B89968] text-[#0F3D6A] text-[10px] font-medium tracking-[0.12em] uppercase px-3 py-1 mb-4 self-start">
+                  {col.badge}
+                </span>
+              )}
+              <div className={`text-[10px] tracking-[0.14em] uppercase mb-2 ${col.featured ? "text-[#B89968]" : "text-[#7A8FA6]"}`}>{col.label}</div>
+              <div className="font-display text-lg font-light text-[#0F3D6A] mb-6 leading-[1.3]">{col.name}</div>
+              <ul className="flex flex-col gap-2.5 flex-1">
+                {col.items.map((item) => (
+                  <li key={item.text} className="flex items-start gap-2.5 text-xs leading-[1.55]">
+                    {item.ok
+                      ? <Check className="h-3.5 w-3.5 text-[#B89968] flex-shrink-0 mt-0.5" />
+                      : <X className="h-3.5 w-3.5 text-[#7A8FA6] flex-shrink-0 mt-0.5" />
+                    }
+                    <span className={item.ok ? "text-[#3F5673]" : "text-[#7A8FA6]"}>{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+              {col.featured && (
+                <a href="#contact" className="mt-6 block bg-[#0F3D6A] text-[#FAF7F1] text-[10px] font-medium tracking-[0.14em] uppercase py-3 text-center hover:bg-[#9C7E4F] transition-colors cursor-pointer">
+                  Diagnostic gratuit
+                </a>
+              )}
+            </div>
+          ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[220px]">
-          {cards.map((card) => {
-            const Icon = card.icon;
-            return (
-              <div
-                key={card.title}
-                className={`${card.size} ${card.bg} rounded-2xl p-7 flex flex-col justify-between border border-[#E8E2D9] hover:scale-[1.01] transition-transform duration-200`}
-              >
-                <div className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${card.iconBg}`}>
-                  <Icon className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className={`font-semibold text-lg mb-2 ${card.text}`}>{card.title}</h3>
-                  <p className={`text-sm leading-relaxed ${card.muted}`}>{card.body}</p>
-                </div>
-              </div>
-            );
-          })}
+        {/* Credential chips */}
+        <div className="flex flex-wrap gap-2 mt-6">
+          {badges.map((b) => (
+            <span key={b.text} className="text-[11px] text-[#3F5673] border border-[#DCD9D2] px-3 py-1.5 bg-white">{b.text}</span>
+          ))}
         </div>
       </div>
     </section>

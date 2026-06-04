@@ -1,36 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --cream: #FAF7F2;
-  --forest: #1A3D2B;
-  --forest-light: #2A5C40;
-  --orange: #E8622A;
-  --orange-dark: #C94E1A;
-  --stone-text: #2C2C2C;
-  --stone-muted: #6B6560;
-  --border: #E8E2D9;
+  --ink: #0F3D6A;
+  --ink-soft: #3F5673;
+  --muted: #7A8FA6;
+  --copper: #B89968;
+  --copper-deep: #9C7E4F;
+  --paper: #FAF7F1;
+  --beige: #EFE6D4;
+  --line: #DCD9D2;
+  --white: #FFFFFF;
 }
 
 @theme inline {
-  --color-cream: var(--cream);
-  --color-forest: var(--forest);
-  --color-forest-light: var(--forest-light);
-  --color-orange: var(--orange);
-  --color-stone-text: var(--stone-text);
-  --color-stone-muted: var(--stone-muted);
-  --color-border: var(--border);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-calistoga);
+  --font-sans: var(--font-jost);
+  --font-display: var(--font-cormorant);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-copper: var(--copper);
+  --color-paper: var(--paper);
+  --color-beige: var(--beige);
+  --color-line: var(--line);
 }
 
+html { scroll-behavior: smooth; }
+
 body {
-  background: var(--cream);
-  color: var(--stone-text);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-family: var(--font-jost), sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
 }
 
 .font-display {
-  font-family: var(--font-calistoga), serif;
+  font-family: var(--font-cormorant), serif;
 }
 
 @media (prefers-reduced-motion: reduce) {
