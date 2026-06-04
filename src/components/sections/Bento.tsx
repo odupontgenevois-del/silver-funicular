@@ -1,102 +1,89 @@
-import { Check, X } from "lucide-react";
+import { Check, X, Zap } from "lucide-react";
 
-const cols = [
-  {
-    label: "Option 1",
-    name: "DRH interne en CDI",
-    featured: false,
-    items: [
-      { text: "Présence quotidienne", ok: true },
-      { text: "80 000 à 120 000 €/an charges comprises", ok: false },
-      { text: "Recrutement : 3 à 6 mois avant démarrage", ok: false },
-      { text: "Profil rarement ajusté au besoin exact", ok: false },
-      { text: "Biais politique interne inévitable", ok: false },
-    ],
-  },
-  {
-    label: "Option 2 · Artémis RH",
-    name: "La bonne experte. Au bon moment.",
-    featured: true,
-    badge: "Le bon choix",
-    items: [
-      { text: "20 ans d'expérience, industrie et ETI", ok: true },
-      { text: "Coût calibré sur votre besoin réel", ok: true },
-      { text: "Démarrage en moins d'une semaine", ok: true },
-      { text: "Regard extérieur, sans biais politique", ok: true },
-      { text: "Résultats mesurés, sourcés, vérifiables", ok: true },
-    ],
-  },
-  {
-    label: "Option 3",
-    name: "Cabinet de conseil RH",
-    featured: false,
-    items: [
-      { text: "Expertise thématique disponible", ok: true },
-      { text: "Consultant, pas un pilote opérationnel", ok: false },
-      { text: "Facturation à la journée, coût variable élevé", ok: false },
-      { text: "Peu d'ancrage dans votre réalité terrain", ok: false },
-      { text: "Pas de responsabilité sur les résultats", ok: false },
-    ],
-  },
+const rows = [
+  { label: "Coût annuel", drh: "80 000–120 000 €", artemis: "Calibré sur votre besoin", cabinet: "Variable, élevé à la journée" },
+  { label: "Délai de démarrage", drh: "3 à 6 mois", artemis: "< 1 semaine", cabinet: "Rapide mais limité" },
+  { label: "Pilotage opérationnel", drh: true, artemis: true, cabinet: false },
+  { label: "Regard extérieur / sans biais", drh: false, artemis: true, cabinet: true },
+  { label: "Responsabilité sur les résultats", drh: true, artemis: true, cabinet: false },
+  { label: "Expérience industrie / ETI", drh: "Variable", artemis: "20 ans terrain", cabinet: "Thématique" },
 ];
 
-const badges = [
-  { text: "Prix ONU · New York 2019" },
-  { text: "Mastère HEC Paris" },
-  { text: "20 ans · Industrie & ETI" },
-  { text: "15 pays · EMEA" },
-  { text: "Membre de CODIR" },
-];
+const Cell = ({ val, featured }: { val: boolean | string; featured?: boolean }) => {
+  if (typeof val === "boolean") {
+    return val
+      ? <Check className="h-4 w-4 text-[#C4A46B] mx-auto" />
+      : <X className="h-4 w-4 text-[#9AABB8]/40 mx-auto" />;
+  }
+  return <span className={`text-xs ${featured ? "text-[#C4A46B] font-semibold" : "text-[#9AABB8]"}`}>{val}</span>;
+};
 
 export function Diff() {
   return (
-    <section id="diff" className="py-16 sm:py-24 bg-white border-t border-[#DCD9D2]">
-      <div className="mx-auto max-w-5xl px-5">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-7 h-px bg-[#B89968]" />
-          <span className="text-[10px] font-medium tracking-[0.18em] uppercase text-[#B89968]">Pourquoi le temps partagé</span>
+    <section id="diff" className="py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-5">
+        <div className="max-w-2xl mb-14">
+          <div className="inline-flex items-center gap-2 mb-5">
+            <div className="h-px w-8 bg-[#C4A46B]" />
+            <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#C4A46B]">Pourquoi le temps partagé</span>
+          </div>
+          <h2 className="font-display text-4xl sm:text-5xl font-light text-[#EDE9E3] leading-[1.12]">
+            Trois options.{" "}
+            <em className="text-[#C4A46B]">Une seule</em> qui combine expertise et coût maîtrisé.
+          </h2>
         </div>
-        <h2 className="font-display text-3xl sm:text-4xl font-light text-[#0F3D6A] leading-[1.18] mb-1">
-          Trois options. Une seule qui{" "}
-          <em className="text-[#B89968]">combine</em> les deux.
-        </h2>
-        <p className="text-sm text-[#7A8FA6] mb-10">Expertise et coût maîtrisé. Comparaison objective.</p>
 
-        <div className="grid md:grid-cols-3 gap-px bg-[#DCD9D2]">
-          {cols.map((col) => (
-            <div key={col.label} className={`p-7 flex flex-col ${col.featured ? "bg-[#EFE6D4] border-t-2 border-t-[#B89968]" : "bg-[#FAF7F1] border-t-2 border-t-[#DCD9D2]"}`}>
-              {col.badge && (
-                <span className="inline-block bg-[#B89968] text-[#0F3D6A] text-[10px] font-medium tracking-[0.12em] uppercase px-3 py-1 mb-4 self-start">
-                  {col.badge}
-                </span>
-              )}
-              <div className={`text-[10px] tracking-[0.14em] uppercase mb-2 ${col.featured ? "text-[#B89968]" : "text-[#7A8FA6]"}`}>{col.label}</div>
-              <div className="font-display text-lg font-light text-[#0F3D6A] mb-6 leading-[1.3]">{col.name}</div>
-              <ul className="flex flex-col gap-2.5 flex-1">
-                {col.items.map((item) => (
-                  <li key={item.text} className="flex items-start gap-2.5 text-xs leading-[1.55]">
-                    {item.ok
-                      ? <Check className="h-3.5 w-3.5 text-[#B89968] flex-shrink-0 mt-0.5" />
-                      : <X className="h-3.5 w-3.5 text-[#7A8FA6] flex-shrink-0 mt-0.5" />
-                    }
-                    <span className={item.ok ? "text-[#3F5673]" : "text-[#7A8FA6]"}>{item.text}</span>
-                  </li>
-                ))}
-              </ul>
-              {col.featured && (
-                <a href="#contact" className="mt-6 block bg-[#0F3D6A] text-[#FAF7F1] text-[10px] font-medium tracking-[0.14em] uppercase py-3 text-center hover:bg-[#9C7E4F] transition-colors cursor-pointer">
-                  Diagnostic gratuit
-                </a>
-              )}
+        {/* Comparison table */}
+        <div className="glass rounded-2xl overflow-hidden">
+          {/* Header */}
+          <div className="grid grid-cols-4 border-b border-white/7">
+            <div className="p-5" />
+            {[
+              { label: "DRH interne CDI", sub: "Option 1", feat: false },
+              { label: "Artémis RH", sub: "Option 2 · Recommandé", feat: true },
+              { label: "Cabinet conseil", sub: "Option 3", feat: false },
+            ].map((col) => (
+              <div key={col.label} className={`p-5 border-l border-white/7 ${col.feat ? "bg-[#C4A46B]/8" : ""}`}>
+                {col.feat && (
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#C4A46B] mb-3">
+                    <Zap className="h-2.5 w-2.5 text-[#0C1B2E]" />
+                    <span className="text-[9px] font-bold text-[#0C1B2E] tracking-wide uppercase">Le bon choix</span>
+                  </div>
+                )}
+                <div className="text-xs font-semibold text-[#EDE9E3]">{col.label}</div>
+                <div className="text-[10px] text-[#9AABB8] mt-0.5">{col.sub}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Rows */}
+          {rows.map((row, i) => (
+            <div key={row.label} className={`grid grid-cols-4 border-b border-white/5 last:border-0 ${i % 2 === 0 ? "" : "bg-white/[0.02]"}`}>
+              <div className="px-5 py-4 text-xs text-[#9AABB8] font-medium flex items-center">{row.label}</div>
+              <div className="px-5 py-4 border-l border-white/5 flex items-center justify-center text-center">
+                <Cell val={row.drh} />
+              </div>
+              <div className="px-5 py-4 border-l border-white/5 bg-[#C4A46B]/5 flex items-center justify-center text-center">
+                <Cell val={row.artemis} featured />
+              </div>
+              <div className="px-5 py-4 border-l border-white/5 flex items-center justify-center text-center">
+                <Cell val={row.cabinet} />
+              </div>
             </div>
           ))}
-        </div>
 
-        {/* Credential chips */}
-        <div className="flex flex-wrap gap-2 mt-6">
-          {badges.map((b) => (
-            <span key={b.text} className="text-[11px] text-[#3F5673] border border-[#DCD9D2] px-3 py-1.5 bg-white">{b.text}</span>
-          ))}
+          {/* Footer CTA */}
+          <div className="grid grid-cols-4 border-t border-white/7 bg-white/[0.02]">
+            <div className="px-5 py-4" />
+            <div className="px-5 py-4 border-l border-white/5" />
+            <div className="px-5 py-4 border-l border-white/5 bg-[#C4A46B]/5">
+              <a href="#contact"
+                className="block w-full text-center text-xs font-semibold tracking-wide text-[#0C1B2E] bg-[#C4A46B] px-4 py-2.5 rounded-xl hover:bg-[#D4B47B] transition-colors cursor-pointer">
+                Diagnostic gratuit →
+              </a>
+            </div>
+            <div className="px-5 py-4 border-l border-white/5" />
+          </div>
         </div>
       </div>
     </section>
