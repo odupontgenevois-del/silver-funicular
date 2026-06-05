@@ -18,35 +18,45 @@ const situations = [
   "Croissance rapide, process dépassés",
 ];
 
-function AnimatedKpi({ from, to, suffix, prefix, label, sub }: { from: number; to: number; suffix: string; prefix: string; label: string; sub: string }) {
-  const [display, setDisplay] = useState(from);
+function useCountUp(from: number, to: number, duration = 2200) {
+  const [value, setValue] = useState(from);
   const ref = useRef<HTMLDivElement>(null);
   const started = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !started.current) {
-        started.current = true;
-        const duration = 2000;
-        const startTime = performance.now();
-        const diff = to - from;
-        function tick(now: number) {
-          const progress = Math.min((now - startTime) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          setDisplay(Math.round(from + diff * eased));
-          if (progress < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-        obs.disconnect();
+
+    function runAnimation() {
+      if (started.current) return;
+      started.current = true;
+      const startTime = performance.now();
+      const diff = to - from;
+
+      function tick(now: number) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setValue(Math.round(from + diff * eased));
+        if (progress < 1) requestAnimationFrame(tick);
       }
-    }, { threshold: 0.5 });
+      requestAnimationFrame(tick);
+    }
+
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { runAnimation(); obs.disconnect(); } },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [from, to]);
+  }, [from, to, duration]);
 
-  const abs = Math.abs(display);
+  return { value, ref };
+}
+
+function AnimatedKpi({ from, to, suffix, prefix, label, sub }: { from: number; to: number; suffix: string; prefix: string; label: string; sub: string }) {
+  const { value, ref } = useCountUp(from, to);
+  const abs = Math.abs(value);
+
   return (
     <div ref={ref} className="glass-copper rounded-2xl p-5 text-center hover:glow-copper transition-all duration-300">
       <div className="font-display text-3xl font-light text-[#C4A46B] leading-none mb-2 tabular-nums">
