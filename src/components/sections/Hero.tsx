@@ -84,36 +84,36 @@ function LetterRevealLine({ text, gradient, lineIndex }: { text: string; gradien
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const plain = text;
     el.innerHTML = "";
     let charCount = 0;
-    for (let c = 0; c < plain.length; c++) {
-      const ch = plain[c];
-      const span = document.createElement("span");
-      span.style.cssText = "display:inline-block;opacity:0;transform:translateY(60px) rotate(2deg);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(.16,1,.3,1);";
-      span.textContent = ch;
-      const delay = 0.04 + lineIndex * 0.12 + charCount * 0.022;
-      span.style.transitionDelay = delay + "s";
-      el.appendChild(span);
-      if (ch !== " ") charCount++;
+    for (let c = 0; c < text.length; c++) {
+      const ch = text[c];
+      if (ch === " ") {
+        // preserve spaces as actual text nodes so words don't merge
+        el.appendChild(document.createTextNode(" "));
+      } else {
+        const span = document.createElement("span");
+        span.style.cssText = "display:inline-block;opacity:0;transform:translateY(55px) rotate(2deg);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(.16,1,.3,1);";
+        span.textContent = ch;
+        const delay = 0.04 + lineIndex * 0.14 + charCount * 0.024;
+        span.style.transitionDelay = delay + "s";
+        el.appendChild(span);
+        charCount++;
+      }
     }
     const timer = setTimeout(() => {
       el.querySelectorAll("span").forEach((s) => {
         (s as HTMLElement).style.opacity = "1";
         (s as HTMLElement).style.transform = "translateY(0) rotate(0deg)";
       });
-    }, 100 + lineIndex * 90);
+    }, 80 + lineIndex * 100);
     return () => clearTimeout(timer);
   }, [text, lineIndex]);
 
   return (
     <span
       ref={ref}
-      className={
-        gradient
-          ? "block gradient-text"
-          : "block text-[#EDE9E3]"
-      }
+      className={gradient ? "block gradient-text" : "block text-[#EDE9E3]"}
       suppressHydrationWarning
     >
       {text}
@@ -134,8 +134,8 @@ export function Hero() {
             {/* Left */}
             <div>
               <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass-copper mb-10 animate-fade-up">
-                <Award className="h-4 w-4 text-[#C4A46B]" />
-                <span className="text-sm text-[#C4A46B] font-medium tracking-[0.14em] uppercase">Prix Nations Unies 2019 · Mastère HEC Paris · 20 ans terrain</span>
+                <Award className="h-4 w-4 text-[#C4A46B] flex-shrink-0" />
+                <span className="text-sm text-[#C4A46B] font-medium tracking-[0.14em] uppercase whitespace-nowrap">Prix Nations Unies 2019 · Mastère HEC Paris · 20 ans terrain</span>
               </div>
 
               <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.06] tracking-tight mb-8">
