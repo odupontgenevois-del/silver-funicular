@@ -94,7 +94,7 @@ function OverlayCopy({ subheading, heading }: { subheading: string; heading: str
       style={{ y, opacity }}
       className="absolute left-0 top-0 flex h-screen w-full flex-col items-center justify-center px-6 text-center"
     >
-      <p className="mb-3 text-sm font-medium tracking-[0.25em] uppercase text-[#C4A46B]">
+      <p className="mb-3 text-lg font-medium tracking-[0.25em] uppercase text-[#C4A46B]">
         {subheading}
       </p>
       <p className="font-display text-5xl font-light text-[#EDE9E3] leading-[1.1] max-w-3xl md:text-7xl">
@@ -111,7 +111,7 @@ function SectionContent({ section }: { section: Section }) {
       <div className="col-span-1 md:col-span-4 flex flex-col justify-center">
         <div className="glass-copper rounded-2xl p-8 text-center">
           <div className="font-display text-5xl font-light text-[#C4A46B] mb-2">{section.stat}</div>
-          <div className="text-sm text-[#9AABB8] leading-[1.6]">{section.statLabel}</div>
+          <div className="text-lg text-[#9AABB8] leading-[1.6]">{section.statLabel}</div>
         </div>
       </div>
 
@@ -123,7 +123,7 @@ function SectionContent({ section }: { section: Section }) {
         {section.cta && (
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 self-start px-7 py-3.5 rounded-full bg-[#C4A46B] text-[#0C1B2E] text-sm font-semibold tracking-wide hover:bg-[#D4B47B] hover:shadow-lg hover:shadow-[#C4A46B]/25 transition-all duration-200 cursor-pointer"
+            className="inline-flex items-center gap-2 self-start px-7 py-3.5 rounded-full bg-[#C4A46B] text-[#0C1B2E] text-lg font-semibold tracking-wide hover:bg-[#D4B47B] hover:shadow-lg hover:shadow-[#C4A46B]/25 transition-all duration-200 cursor-pointer"
           >
             {section.cta}
             <ArrowUpRight className="h-4 w-4" />

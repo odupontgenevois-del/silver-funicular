@@ -12,20 +12,20 @@ const rows = [
 const Cell = ({ val, featured }: { val: boolean | string; featured?: boolean }) => {
   if (typeof val === "boolean") {
     return val
-      ? <Check className="h-4 w-4 text-[#C4A46B] mx-auto" />
-      : <X className="h-4 w-4 text-[#9AABB8]/40 mx-auto" />;
+      ? <Check className="h-5 w-5 text-[#C4A46B] mx-auto" />
+      : <X className="h-5 w-5 text-[#9AABB8]/40 mx-auto" />;
   }
-  return <span className={`text-xs ${featured ? "text-[#C4A46B] font-semibold" : "text-[#9AABB8]"}`}>{val}</span>;
+  return <span className={`text-sm ${featured ? "text-[#C4A46B] font-semibold" : "text-[#9AABB8]"}`}>{val}</span>;
 };
 
 export function Diff() {
   return (
-    <section id="diff" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="max-w-2xl mb-14">
-          <div className="inline-flex items-center gap-2 mb-5">
+    <section id="diff" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="max-w-2xl mb-16">
+          <div className="inline-flex items-center gap-2 mb-6">
             <div className="h-px w-8 bg-[#C4A46B]" />
-            <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#C4A46B]">Pourquoi le temps partagé</span>
+            <span className="text-sm font-medium tracking-[0.2em] uppercase text-[#C4A46B]">Pourquoi le temps partagé</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-light text-[#EDE9E3] leading-[1.12]">
             Trois options.{" "}
@@ -33,56 +33,45 @@ export function Diff() {
           </h2>
         </div>
 
-        {/* Comparison table */}
         <div className="glass rounded-2xl overflow-hidden">
-          {/* Header */}
           <div className="grid grid-cols-4 border-b border-white/7">
-            <div className="p-5" />
+            <div className="p-6" />
             {[
               { label: "DRH interne CDI", sub: "Option 1", feat: false },
               { label: "Artémis RH", sub: "Option 2 · Recommandé", feat: true },
               { label: "Cabinet conseil", sub: "Option 3", feat: false },
             ].map((col) => (
-              <div key={col.label} className={`p-5 border-l border-white/7 ${col.feat ? "bg-[#C4A46B]/8" : ""}`}>
+              <div key={col.label} className={`p-6 border-l border-white/7 ${col.feat ? "bg-[#C4A46B]/8" : ""}`}>
                 {col.feat && (
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#C4A46B] mb-3">
-                    <Zap className="h-2.5 w-2.5 text-[#0C1B2E]" />
-                    <span className="text-[9px] font-bold text-[#0C1B2E] tracking-wide uppercase">Le bon choix</span>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C4A46B] mb-3">
+                    <Zap className="h-3 w-3 text-[#0C1B2E]" />
+                    <span className="text-xs font-bold text-[#0C1B2E] tracking-wide uppercase">Le bon choix</span>
                   </div>
                 )}
-                <div className="text-xs font-semibold text-[#EDE9E3]">{col.label}</div>
-                <div className="text-[10px] text-[#9AABB8] mt-0.5">{col.sub}</div>
+                <div className="text-sm font-semibold text-[#EDE9E3]">{col.label}</div>
+                <div className="text-xs text-[#9AABB8] mt-1">{col.sub}</div>
               </div>
             ))}
           </div>
 
-          {/* Rows */}
           {rows.map((row, i) => (
             <div key={row.label} className={`grid grid-cols-4 border-b border-white/5 last:border-0 ${i % 2 === 0 ? "" : "bg-white/[0.02]"}`}>
-              <div className="px-5 py-4 text-xs text-[#9AABB8] font-medium flex items-center">{row.label}</div>
-              <div className="px-5 py-4 border-l border-white/5 flex items-center justify-center text-center">
-                <Cell val={row.drh} />
-              </div>
-              <div className="px-5 py-4 border-l border-white/5 bg-[#C4A46B]/5 flex items-center justify-center text-center">
-                <Cell val={row.artemis} featured />
-              </div>
-              <div className="px-5 py-4 border-l border-white/5 flex items-center justify-center text-center">
-                <Cell val={row.cabinet} />
-              </div>
+              <div className="px-6 py-5 text-sm text-[#9AABB8] font-medium flex items-center">{row.label}</div>
+              <div className="px-6 py-5 border-l border-white/5 flex items-center justify-center text-center"><Cell val={row.drh} /></div>
+              <div className="px-6 py-5 border-l border-white/5 bg-[#C4A46B]/5 flex items-center justify-center text-center"><Cell val={row.artemis} featured /></div>
+              <div className="px-6 py-5 border-l border-white/5 flex items-center justify-center text-center"><Cell val={row.cabinet} /></div>
             </div>
           ))}
 
-          {/* Footer CTA */}
           <div className="grid grid-cols-4 border-t border-white/7 bg-white/[0.02]">
-            <div className="px-5 py-4" />
-            <div className="px-5 py-4 border-l border-white/5" />
-            <div className="px-5 py-4 border-l border-white/5 bg-[#C4A46B]/5">
-              <a href="#contact"
-                className="block w-full text-center text-xs font-semibold tracking-wide text-[#0C1B2E] bg-[#C4A46B] px-4 py-2.5 rounded-xl hover:bg-[#D4B47B] transition-colors cursor-pointer">
+            <div className="px-6 py-5" />
+            <div className="px-6 py-5 border-l border-white/5" />
+            <div className="px-6 py-5 border-l border-white/5 bg-[#C4A46B]/5">
+              <a href="#contact" className="block w-full text-center text-sm font-semibold text-[#0C1B2E] bg-[#C4A46B] px-4 py-3 rounded-xl hover:bg-[#D4B47B] transition-colors cursor-pointer">
                 Diagnostic gratuit →
               </a>
             </div>
-            <div className="px-5 py-4 border-l border-white/5" />
+            <div className="px-6 py-5 border-l border-white/5" />
           </div>
         </div>
       </div>
