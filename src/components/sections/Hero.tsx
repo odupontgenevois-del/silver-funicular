@@ -6,9 +6,9 @@ import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import { useEffect, useRef, useState } from "react";
 
 const kpis = [
-  { from: 0, to: -25, suffix: "%", prefix: "−", label: "Turnover postes clés", sub: "Camfil 2017–2023" },
-  { from: 0, to: -30, suffix: "%", prefix: "−", label: "Time-to-fill", sub: "Camfil 2017–2023" },
-  { from: 0, to: 20, suffix: " ans", prefix: "", label: "DRH opérationnelle", sub: "Industrie & ETI" },
+  { from: 0,    to: 20,   suffix: " ans", sign: "none", label: "DRH opérationnelle",  sub: "Industrie & ETI" },
+  { from: 25,   to: -25,  suffix: "%",    sign: "show", label: "Turnover postes clés", sub: "Camfil 2017–2023" },
+  { from: 2000, to: 2019, suffix: "",     sign: "none", label: "Prix ONU · New York",  sub: "Diversité · 17 pays" },
 ];
 
 const situations = [
@@ -18,7 +18,14 @@ const situations = [
   "Croissance rapide, process dépassés",
 ];
 
-function useCountUp(from: number, to: number, duration = 2200) {
+function formatKpi(val: number, sign: string): string {
+  const n = Math.round(val);
+  const abs = Math.abs(n);
+  if (sign === "show") return (n > 0 ? "+" : n < 0 ? "−" : "") + abs;
+  return String(abs);
+}
+
+function useCountUp(from: number, to: number, duration = 2400) {
   const [value, setValue] = useState(from);
   const ref = useRef<HTMLDivElement>(null);
   const started = useRef(false);
@@ -26,25 +33,24 @@ function useCountUp(from: number, to: number, duration = 2200) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
-    function runAnimation() {
-      if (started.current) return;
-      started.current = true;
-      const startTime = performance.now();
-      const diff = to - from;
-
-      function tick(now: number) {
-        const progress = Math.min((now - startTime) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        setValue(Math.round(from + diff * eased));
-        if (progress < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { runAnimation(); obs.disconnect(); } },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const t0 = performance.now();
+          const diff = to - from;
+          function tick(now: number) {
+            const p = Math.min((now - t0) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            setValue(from + diff * eased);
+            if (p < 1) requestAnimationFrame(tick);
+            else setValue(to);
+          }
+          requestAnimationFrame(tick);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -53,14 +59,13 @@ function useCountUp(from: number, to: number, duration = 2200) {
   return { value, ref };
 }
 
-function AnimatedKpi({ from, to, suffix, prefix, label, sub }: { from: number; to: number; suffix: string; prefix: string; label: string; sub: string }) {
+function AnimatedKpi({ from, to, suffix, sign, label, sub }: { from: number; to: number; suffix: string; sign: string; label: string; sub: string }) {
   const { value, ref } = useCountUp(from, to);
-  const abs = Math.abs(value);
 
   return (
     <div ref={ref} className="glass-copper rounded-2xl p-5 text-center hover:glow-copper transition-all duration-300">
       <div className="font-display text-3xl font-light text-[#C4A46B] leading-none mb-2 tabular-nums">
-        {to < 0 ? "−" : prefix}{abs}{suffix}
+        {formatKpi(value, sign)}{suffix}
       </div>
       <div className="text-sm text-[#EDE9E3] leading-[1.4] font-medium">{label}</div>
       <div className="text-xs text-[#9AABB8] mt-1.5 italic">{sub}</div>
@@ -196,7 +201,7 @@ export function Hero() {
           <div className="grid lg:grid-cols-[1fr_1fr] gap-8 items-stretch">
             <div className="grid grid-cols-3 gap-4">
               {kpis.map((k) => (
-                <AnimatedKpi key={k.label} {...k} />
+                <AnimatedKpi key={k.label} from={k.from} to={k.to} suffix={k.suffix} sign={k.sign} label={k.label} sub={k.sub} />
               ))}
             </div>
 
