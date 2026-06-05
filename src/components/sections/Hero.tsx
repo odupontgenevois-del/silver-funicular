@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Award } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import { useEffect, useRef, useState } from "react";
@@ -61,63 +61,14 @@ function useCountUp(from: number, to: number, duration = 2400) {
 
 function AnimatedKpi({ from, to, suffix, sign, label, sub }: { from: number; to: number; suffix: string; sign: string; label: string; sub: string }) {
   const { value, ref } = useCountUp(from, to);
-
   return (
-    <div ref={ref} className="glass-copper rounded-2xl p-5 text-center hover:glow-copper transition-all duration-300">
-      <div className="font-display text-3xl font-light text-[#C4A46B] leading-none mb-2 tabular-nums">
+    <div ref={ref} className="glass-copper rounded-2xl p-5 text-center transition-all duration-300 cursor-default hover:bg-[#C4A46B] hover:shadow-lg hover:shadow-[#C4A46B]/40 hover:-translate-y-1 group">
+      <div className="font-display text-3xl font-light text-[#C4A46B] group-hover:text-[#0C1B2E] leading-none mb-2 tabular-nums transition-colors duration-300">
         {formatKpi(value, sign)}{suffix}
       </div>
-      <div className="text-sm text-[#EDE9E3] leading-[1.4] font-medium">{label}</div>
-      <div className="text-xs text-[#9AABB8] mt-1.5 italic">{sub}</div>
+      <div className="text-sm text-[#EDE9E3] group-hover:text-[#0C1B2E] leading-[1.4] font-medium transition-colors duration-300">{label}</div>
+      <div className="text-xs text-[#9AABB8] group-hover:text-[#0C1B2E]/70 mt-1.5 italic transition-colors duration-300">{sub}</div>
     </div>
-  );
-}
-
-const H1_LINES = [
-  { text: "Votre DRH senior.", gradient: true },
-  { text: "Sans le coût d'un CDI.", gradient: false },
-];
-
-function LetterRevealLine({ text, gradient, lineIndex }: { text: string; gradient: boolean; lineIndex: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    el.innerHTML = "";
-    let charCount = 0;
-    for (let c = 0; c < text.length; c++) {
-      const ch = text[c];
-      if (ch === " ") {
-        // preserve spaces as actual text nodes so words don't merge
-        el.appendChild(document.createTextNode(" "));
-      } else {
-        const span = document.createElement("span");
-        span.style.cssText = "display:inline-block;opacity:0;transform:translateY(55px) rotate(2deg);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(.16,1,.3,1);";
-        span.textContent = ch;
-        const delay = 0.04 + lineIndex * 0.14 + charCount * 0.024;
-        span.style.transitionDelay = delay + "s";
-        el.appendChild(span);
-        charCount++;
-      }
-    }
-    const timer = setTimeout(() => {
-      el.querySelectorAll("span").forEach((s) => {
-        (s as HTMLElement).style.opacity = "1";
-        (s as HTMLElement).style.transform = "translateY(0) rotate(0deg)";
-      });
-    }, 80 + lineIndex * 100);
-    return () => clearTimeout(timer);
-  }, [text, lineIndex]);
-
-  return (
-    <span
-      ref={ref}
-      className={gradient ? "block gradient-text" : "block text-[#EDE9E3]"}
-      suppressHydrationWarning
-    >
-      {text}
-    </span>
   );
 }
 
@@ -133,43 +84,57 @@ export function Hero() {
 
             {/* Left */}
             <div>
-              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass-copper mb-10 animate-fade-up">
-                <Award className="h-4 w-4 text-[#C4A46B] flex-shrink-0" />
-                <span className="text-sm text-[#C4A46B] font-medium tracking-[0.14em] uppercase whitespace-nowrap">Prix Nations Unies 2019 · Mastère HEC Paris · 20 ans terrain</span>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-copper mb-8"
+                style={{ animation: "fadeUp 0.6s ease both" }}>
+                <span className="text-xs text-[#C4A46B] font-semibold tracking-[0.18em] uppercase whitespace-nowrap">
+                  DRH externalisée — PME &amp; ETI
+                </span>
               </div>
 
-              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.06] tracking-tight mb-8">
-                {H1_LINES.map((line, i) => (
-                  <LetterRevealLine key={i} text={line.text} gradient={line.gradient} lineIndex={i} />
-                ))}
+              {/* H1 — trois lignes animées par CSS, pas de JS sur le texte */}
+              <h1 className="font-display font-light leading-[1.08] tracking-tight mb-6">
+                <span className="block text-[#C4A46B]"
+                  style={{ fontSize: "clamp(2.8rem,6vw,4.8rem)", animation: "slideUp 0.7s cubic-bezier(.16,1,.3,1) 0.1s both" }}>
+                  La bonne DRH.
+                </span>
+                <span className="block text-[#EDE9E3]"
+                  style={{ fontSize: "clamp(2.8rem,6vw,4.8rem)", animation: "slideUp 0.7s cubic-bezier(.16,1,.3,1) 0.22s both" }}>
+                  Au bon moment.
+                </span>
+                <span className="block text-[#EDE9E3]"
+                  style={{ fontSize: "clamp(2.8rem,6vw,4.8rem)", animation: "slideUp 0.7s cubic-bezier(.16,1,.3,1) 0.34s both" }}>
+                  Sans le CDI.
+                </span>
               </h1>
 
-              <p className="text-lg text-[#9AABB8] max-w-lg leading-[1.85] mb-4 animate-fade-up" style={{ animationDelay: "0.55s" }}>
-                Recruter un DRH en CDI coûte{" "}
-                <strong className="text-[#EDE9E3] font-medium">80 000 à 120 000 €/an</strong>,
-                3 à 6 mois de délai, et un profil rarement ajusté à votre besoin exact.
-              </p>
-              <p className="text-xl text-[#C4A46B] font-display italic mb-12 animate-fade-up" style={{ animationDelay: "0.65s" }}>
-                Il existe une troisième option.
+              <p className="text-lg text-[#9AABB8] max-w-lg leading-[1.85] mb-10"
+                style={{ animation: "fadeUp 0.7s ease 0.52s both" }}>
+                Vous avez besoin d'une expertise RH de haut niveau — pas d'un poste à plein temps que vous ne pouvez pas encore assumer.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-start gap-4 animate-fade-up" style={{ animationDelay: "0.75s" }}>
+              <div className="flex flex-col sm:flex-row items-start gap-4"
+                style={{ animation: "fadeUp 0.7s ease 0.64s both" }}>
                 <a href="#contact"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#C4A46B] text-[#0C1B2E] text-base font-semibold tracking-wide hover:bg-[#D4B47B] hover:shadow-lg hover:shadow-[#C4A46B]/25 transition-all duration-200 cursor-pointer">
-                  Réserver mon diagnostic
+                  Réserver mon diagnostic gratuit
                   <ArrowRight className="h-5 w-5" />
                 </a>
-                <a href="#diff"
+                <a href="#profil"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full glass border border-white/10 text-base text-[#EDE9E3] hover:bg-white/8 transition-all duration-200 cursor-pointer">
-                  Voir l'approche
+                  Voir le profil
                 </a>
               </div>
 
-              <p className="text-sm text-[#9AABB8]/60 mt-5 animate-fade-up" style={{ animationDelay: "0.85s" }}>Gratuit · 30 min · Sans engagement · Confidentiel</p>
+              <p className="text-sm text-[#9AABB8]/60 mt-5"
+                style={{ animation: "fadeUp 0.7s ease 0.76s both" }}>
+                Gratuit · 30 min · Sans engagement · Confidentiel
+              </p>
             </div>
 
             {/* Right — photo */}
-            <div className="relative animate-fade-up flex justify-center lg:justify-end" style={{ animationDelay: "0.15s" }}>
+            <div className="relative flex justify-center lg:justify-end"
+              style={{ animation: "fadeUp 0.8s ease 0.2s both" }}>
               <div className="absolute inset-0 rounded-3xl bg-[#C4A46B]/8 blur-[60px] scale-90 pointer-events-none" />
               <div className="relative w-full max-w-sm lg:max-w-none">
                 <div className="absolute -inset-px rounded-3xl border border-[#C4A46B]/20 pointer-events-none z-10" />
@@ -193,6 +158,17 @@ export function Hero() {
 
         <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0C1B2E] to-transparent pointer-events-none" />
       </AuroraBackground>
+
+      <style>{`
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(48px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(24px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
 
       {/* KPIs + situation strip */}
       <section className="bg-[#0C1B2E] border-b border-white/7">
