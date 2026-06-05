@@ -74,9 +74,8 @@ function AnimatedKpi({ from, to, suffix, sign, label, sub }: { from: number; to:
 }
 
 const H1_LINES = [
-  { text: "Vos RH méritent", gradient: true },
-  { text: "mieux qu'une case", gradient: false },
-  { text: "vide dans l'organigramme.", gradient: false },
+  { text: "Votre DRH senior.", gradient: true },
+  { text: "Sans le coût d'un CDI.", gradient: false },
 ];
 
 function LetterRevealLine({ text, gradient, lineIndex }: { text: string; gradient: boolean; lineIndex: number }) {
@@ -136,7 +135,7 @@ export function Hero() {
             <div>
               <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass-copper mb-10 animate-fade-up">
                 <Award className="h-4 w-4 text-[#C4A46B]" />
-                <span className="text-sm text-[#C4A46B] font-medium tracking-wide">Prix ONU 2019 · Mastère HEC Paris · 20 ans d'expérience</span>
+                <span className="text-sm text-[#C4A46B] font-medium tracking-[0.14em] uppercase">Prix Nations Unies 2019 · Mastère HEC Paris · 20 ans terrain</span>
               </div>
 
               <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.06] tracking-tight mb-8">
