@@ -75,11 +75,11 @@ function AnimatedKpi({ from, to, suffix, sign, label, sub }: { from: number; to:
 export function Hero() {
   return (
     <>
-      <AuroraBackground className="min-h-screen flex items-center pt-24">
+      <AuroraBackground className="flex items-center pt-20">
         <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
           style={{ backgroundImage: "linear-gradient(rgba(196,164,107,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(196,164,107,0.5) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
 
-        <div className="relative mx-auto max-w-6xl px-6 py-24 w-full">
+        <div className="relative mx-auto max-w-6xl px-6 py-10 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
 
             {/* Left */}
