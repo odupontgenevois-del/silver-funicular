@@ -45,7 +45,7 @@ const sections: Section[] = [
   },
 ];
 
-function StickyImage({ imgUrl }: { imgUrl: string }) {
+function StickyImage({ imgUrl, stat, statLabel }: { imgUrl: string; stat?: string; statLabel?: string }) {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -74,6 +74,22 @@ function StickyImage({ imgUrl }: { imgUrl: string }) {
         className="absolute inset-0 bg-[#0C1B2E]/60"
         style={{ opacity }}
       />
+      {stat && statLabel && (
+        <div className="absolute bottom-8 left-10 z-10">
+          <div className="flex items-end gap-4">
+            {/* Medal icon for ONU prize */}
+            {stat === "2019" && (
+              <div className="w-14 h-14 rounded-full bg-[#C4A46B]/20 border border-[#C4A46B]/50 flex items-center justify-center mb-1 flex-shrink-0" style={{ boxShadow: "0 0 24px rgba(196,164,107,0.3)" }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="#C4A46B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            )}
+            <div>
+              <p className="font-display text-6xl font-light text-[#C4A46B] leading-none" style={{ textShadow: "0 0 40px rgba(196,164,107,0.4)" }}>{stat}</p>
+              <p className="text-sm text-[#EDE9E3]/85 mt-2 font-medium tracking-wide">{statLabel}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 }
@@ -143,7 +159,7 @@ export function ParallaxScroll() {
           style={{ paddingLeft: IMG_PADDING, paddingRight: IMG_PADDING }}
         >
           <div className="relative h-[150vh]">
-            <StickyImage imgUrl={s.imgUrl} />
+            <StickyImage imgUrl={s.imgUrl} stat={s.stat} statLabel={s.statLabel} />
             <OverlayCopy heading={s.heading} subheading={s.subheading} />
           </div>
           <SectionContent section={s} />
