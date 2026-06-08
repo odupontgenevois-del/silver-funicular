@@ -9,7 +9,7 @@ export function Probleme() {
         {/* Left — photo */}
         <div className="relative min-h-[400px] lg:min-h-[600px]">
           <Image
-            src="/photo-reunion-equipe.jpg"
+            src="/photo-reunion-equipe.webp"
             alt="Agnès Genevois en réunion de direction"
             fill
             className="object-cover object-center"
