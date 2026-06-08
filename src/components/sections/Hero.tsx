@@ -66,7 +66,7 @@ function AnimatedKpi({ from, to, suffix, sign, label, sub }: { from: number; to:
   const { value, ref } = useCountUp(from, to);
   return (
     <div ref={ref} className="glass-copper rounded-2xl p-5 text-center transition-all duration-300 cursor-default hover:bg-[#C4A46B] hover:shadow-lg hover:shadow-[#C4A46B]/40 hover:-translate-y-1 group">
-      <div className="font-display text-3xl font-light text-[#C4A46B] group-hover:text-[#0C1B2E] leading-none mb-2 tabular-nums transition-colors duration-300">
+      <div className="font-display text-3xl font-bold text-[#C4A46B] group-hover:text-[#0C1B2E] leading-none mb-2 tabular-nums transition-colors duration-300">
         {formatKpi(value, sign)}{suffix}
       </div>
       <div className="text-sm text-[#EDE9E3] group-hover:text-[#0C1B2E] leading-[1.4] font-medium transition-colors duration-300">{label}</div>
