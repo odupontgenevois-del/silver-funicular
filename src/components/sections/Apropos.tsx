@@ -67,8 +67,8 @@ export function Apropos() {
             {/* Photo */}
             <div className="relative rounded-2xl overflow-hidden h-64 sm:h-80">
               <Image
-                src="/photo-dirigeante.jpg"
-                alt="Leadership en entreprise — DRH en action"
+                src="/agnes-apropos.jpg"
+                alt="Agnès Genevois — DRH en situation de leadership"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, 576px"
