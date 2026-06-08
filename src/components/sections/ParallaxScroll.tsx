@@ -39,7 +39,7 @@ const sections: Section[] = [
     imgUrl: "/agnes-genevois.webp",
     subheading: "L'experte",
     heading: "20 ans de terrain. Pas de théorie.",
-    body: "Fusions, retournements, crises sociales, multi-sites, 4 CCN. Agnès Genevois a traversé tout ça comme DRH opérationnelle, membre de CODIR, responsable de ses décisions.",
+    body: "J'ai traversé des fusions, des retournements industriels, des crises sociales sous tension. Depuis la salle de CODIR, responsable de mes décisions, face aux équipes et aux enjeux réels. Pas depuis un cabinet de conseil.",
     stat: "2019",
     statLabel: "Prix des Nations Unies · Diversité & Inclusion · 17 pays",
   },
