@@ -26,8 +26,14 @@ export function Navbar() {
       scrolled ? "glass border-b border-white/7 py-3" : "bg-transparent py-5"
     )}>
       <nav className="mx-auto max-w-6xl px-6 flex items-center justify-between">
-        <a href="#" className="font-display text-xl text-[#EDE9E3] tracking-wide">
-          Artémis RH <em className="text-[#C4A46B] not-italic">Consulting</em>
+        <a href="#" className="flex items-center gap-3">
+          {/* Circular monogram */}
+          <div className="w-9 h-9 rounded-full border border-[#C4A46B]/60 flex items-center justify-center flex-shrink-0">
+            <span className="font-display text-base font-light text-[#C4A46B] leading-none">A</span>
+          </div>
+          <span className="font-display text-xl font-light text-[#EDE9E3] tracking-wide">
+            Artémis <em className="text-[#C4A46B] not-italic">RH</em> Consulting
+          </span>
         </a>
 
         <ul className="hidden md:flex items-center gap-1">
