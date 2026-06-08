@@ -1,12 +1,5 @@
 import Image from "next/image";
 
-const stats = [
-  { value: "−25%", label: "Turnover postes clés", source: "Camfil 2017–2023" },
-  { value: "−30%", label: "Time-to-fill", source: "Camfil 2017–2023" },
-  { value: "4 CCN", label: "Sites harmonisés", source: "Camfil 2018–2019" },
-  { value: "15", label: "Pays gérés simultanément", source: "EMEA 2014–2021" },
-];
-
 const chips = ["Post-acquisition", "Retournement", "Multi-sites · 4 CCN", "Relations sociales", "Talent management", "SIRH · DPO"];
 
 const objections = [
@@ -82,17 +75,6 @@ export function Apropos() {
               </div>
             </div>
 
-            {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-5">
-              {stats.map((s) => (
-                <div key={s.label} className="glass-copper rounded-2xl p-5 hover:-translate-y-1 transition-transform duration-300">
-                  <div className="font-display text-3xl font-light text-[#C4A46B] leading-none mb-2">{s.value}</div>
-                  <div className="text-lg font-medium text-[#EDE9E3] mb-1">{s.label}</div>
-                  <div className="text-sm text-[#9AABB8] italic">{s.source}</div>
-                </div>
-              ))}
-            </div>
-
             {/* Award */}
             <div className="glass rounded-2xl px-6 py-4 flex items-center gap-5">
               <div className="font-display text-4xl font-light text-[#C4A46B] flex-shrink-0">2019</div>
@@ -100,6 +82,25 @@ export function Apropos() {
                 <div className="text-lg font-semibold text-[#EDE9E3] mb-0.5">Prix des Nations Unies · New York</div>
                 <p className="text-lg text-[#9AABB8] leading-[1.6]">Engagement diversité femmes/industrie. 17 pays sur 3 continents.</p>
               </div>
+            </div>
+
+            {/* Votre situation */}
+            <div id="situation" className="glass rounded-2xl overflow-hidden">
+              <div className="px-6 py-4 border-b border-white/7">
+                <span className="text-sm font-medium tracking-[0.16em] uppercase text-[#C4A46B]">Votre situation</span>
+              </div>
+              {[
+                "Post-acquisition ou intégration",
+                "PME sans DRH, je gère en direct",
+                "Turnover ou crise sociale",
+                "Croissance rapide, process dépassés",
+              ].map((s) => (
+                <a key={s} href="#contact"
+                  className="flex items-center justify-between px-6 py-4 text-base text-[#9AABB8] border-b border-white/5 last:border-0 hover:bg-white/5 hover:text-[#EDE9E3] hover:pl-8 transition-all duration-200 cursor-pointer group">
+                  {s}
+                  <span className="text-[#C4A46B] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">→</span>
+                </a>
+              ))}
             </div>
           </div>
         </div>

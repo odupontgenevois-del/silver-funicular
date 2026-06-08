@@ -8,6 +8,8 @@ import { useEffect, useRef, useState } from "react";
 const kpis = [
   { from: 0,    to: 20,   suffix: " ans", sign: "none", label: "DRH opérationnelle",  sub: "Industrie & ETI" },
   { from: 25,   to: -25,  suffix: "%",    sign: "show", label: "Turnover postes clés", sub: "Camfil 2017–2023" },
+  { from: 0,    to: -30,  suffix: "%",    sign: "show", label: "Time-to-fill",         sub: "Camfil 2017–2023" },
+  { from: 0,    to: 4,    suffix: " CCN", sign: "none", label: "Sites harmonisés",     sub: "Camfil 2018–2019" },
   { from: 2000, to: 2019, suffix: "",     sign: "none", label: "Prix ONU · New York",  sub: "Diversité · 17 pays" },
 ];
 
@@ -170,28 +172,13 @@ export function Hero() {
         }
       `}</style>
 
-      {/* KPIs + situation strip */}
+      {/* KPIs strip */}
       <section className="bg-[#0C1B2E] border-b border-white/7">
         <div className="mx-auto max-w-6xl px-6 py-10">
-          <div className="grid lg:grid-cols-[1fr_1fr] gap-8 items-stretch">
-            <div className="grid grid-cols-3 gap-4">
-              {kpis.map((k) => (
-                <AnimatedKpi key={k.label} from={k.from} to={k.to} suffix={k.suffix} sign={k.sign} label={k.label} sub={k.sub} />
-              ))}
-            </div>
-
-            <div id="situation" className="glass rounded-2xl overflow-hidden">
-              <div className="px-6 py-4 border-b border-white/7">
-                <span className="text-sm font-medium tracking-[0.16em] uppercase text-[#C4A46B]">Votre situation</span>
-              </div>
-              {situations.map((s) => (
-                <a key={s} href="#contact"
-                  className="flex items-center justify-between px-6 py-4 text-base text-[#9AABB8] border-b border-white/5 last:border-0 hover:bg-white/5 hover:text-[#EDE9E3] hover:pl-8 transition-all duration-200 cursor-pointer group">
-                  {s}
-                  <ArrowRight className="h-4 w-4 text-[#C4A46B] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-                </a>
-              ))}
-            </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            {kpis.map((k) => (
+              <AnimatedKpi key={k.label} from={k.from} to={k.to} suffix={k.suffix} sign={k.sign} label={k.label} sub={k.sub} />
+            ))}
           </div>
         </div>
       </section>
