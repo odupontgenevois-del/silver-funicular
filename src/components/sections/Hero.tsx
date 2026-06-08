@@ -85,32 +85,32 @@ export function Hero() {
             {/* Left */}
             <div>
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-copper mb-8"
+              <div className="inline-flex items-center px-4 py-2 rounded-full border border-[#C4A46B]/40 mb-8"
                 style={{ animation: "fadeUp 0.6s ease both" }}>
-                <span className="text-xs text-[#C4A46B] font-semibold tracking-[0.18em] uppercase whitespace-nowrap">
-                  DRH externalisée — PME &amp; ETI
+                <span className="text-xs text-[#C4A46B] font-medium tracking-[0.18em] uppercase whitespace-nowrap">
+                  DRH EXTERNALISÉE — PME &amp; ETI
                 </span>
               </div>
 
-              {/* H1 — trois lignes animées par CSS, pas de JS sur le texte */}
-              <h1 className="font-display font-light leading-[1.08] tracking-tight mb-6">
-                <span className="block text-[#C4A46B]"
-                  style={{ fontSize: "clamp(2.8rem,6vw,4.8rem)", animation: "slideUp 0.7s cubic-bezier(.16,1,.3,1) 0.1s both" }}>
+              {/* H1 */}
+              <h1 className="font-display font-light leading-[1.05] tracking-tight mb-8">
+                <span className="block italic text-[#C4A46B]"
+                  style={{ fontSize: "clamp(3.2rem,7vw,5.5rem)", animation: "slideUp 0.7s cubic-bezier(.16,1,.3,1) 0.1s both" }}>
                   La bonne DRH.
                 </span>
                 <span className="block text-[#EDE9E3]"
-                  style={{ fontSize: "clamp(2.8rem,6vw,4.8rem)", animation: "slideUp 0.7s cubic-bezier(.16,1,.3,1) 0.22s both" }}>
+                  style={{ fontSize: "clamp(3.2rem,7vw,5.5rem)", animation: "slideUp 0.7s cubic-bezier(.16,1,.3,1) 0.22s both" }}>
                   Au bon moment.
                 </span>
                 <span className="block text-[#EDE9E3]"
-                  style={{ fontSize: "clamp(2.8rem,6vw,4.8rem)", animation: "slideUp 0.7s cubic-bezier(.16,1,.3,1) 0.34s both" }}>
+                  style={{ fontSize: "clamp(3.2rem,7vw,5.5rem)", animation: "slideUp 0.7s cubic-bezier(.16,1,.3,1) 0.34s both" }}>
                   Sans le CDI.
                 </span>
               </h1>
 
               <p className="text-lg text-[#9AABB8] max-w-lg leading-[1.85] mb-10"
                 style={{ animation: "fadeUp 0.7s ease 0.52s both" }}>
-                Vous avez besoin d'une expertise RH de haut niveau — pas d'un poste à plein temps que vous ne pouvez pas encore assumer.
+                Votre <strong className="text-[#EDE9E3] font-semibold">DRH à temps partagé</strong> — le niveau d'un Directeur des Ressources Humaines senior, calibré sur le besoin réel de votre PME ou ETI, sans les contraintes d'un recrutement à temps plein.
               </p>
 
               <div className="flex flex-col sm:flex-row items-start gap-4"
@@ -121,14 +121,14 @@ export function Hero() {
                   <ArrowRight className="h-5 w-5" />
                 </a>
                 <a href="#profil"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full glass border border-white/10 text-base text-[#EDE9E3] hover:bg-white/8 transition-all duration-200 cursor-pointer">
-                  Voir le profil
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/20 text-base text-[#EDE9E3] hover:bg-white/8 transition-all duration-200 cursor-pointer">
+                  Découvrir le profil
                 </a>
               </div>
 
               <p className="text-sm text-[#9AABB8]/60 mt-5"
                 style={{ animation: "fadeUp 0.7s ease 0.76s both" }}>
-                Gratuit · 30 min · Sans engagement · Confidentiel
+                30 min · Sans engagement · Confidentiel
               </p>
             </div>
 
