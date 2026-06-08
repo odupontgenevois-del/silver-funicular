@@ -1,11 +1,51 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
+const signaux = [
+  {
+    n: "01",
+    titre: "Turnover non maîtrisé",
+    desc: "Vos postes cadres se vident plus vite que vous ne les remplissez. Chaque départ entraîne perte de mémoire organisationnelle et coût de recrutement.",
+    cout: "Coût moyen : 6 à 18 mois de salaire brut par départ non anticipé",
+  },
+  {
+    n: "02",
+    titre: "Risque légal sous-estimé",
+    desc: "Redressement URSSAF, contentieux prud'homal, accord collectif non conforme. Sans DRH, les obligations légales deviennent des risques financiers.",
+    cout: "",
+  },
+  {
+    n: "03",
+    titre: "Postes critiques vides",
+    desc: "Vos postes stratégiques restent ouverts plus de 60 jours. L'organisation se fragmente. Les équipes compensent jusqu'à l'épuisement.",
+    cout: "",
+  },
+  {
+    n: "04",
+    titre: "IRP sans interlocuteur",
+    desc: "Vos représentants du personnel n'ont pas de DRH à qui parler. Le dialogue social se dégrade en silence, jusqu'au conflit ouvert.",
+    cout: "",
+  },
+  {
+    n: "05",
+    titre: "Management non structuré",
+    desc: "Vos managers décident sans cadre RH. Les pratiques divergent selon les équipes. L'équité interne se dégrade et les conflits s'accumulent.",
+    cout: "",
+  },
+  {
+    n: "06",
+    titre: "Transformation bloquée",
+    desc: "Acquisition, fusion, restructuration, déploiement SIRH. Sans pilotage RH, les transformations s'enlisent ou échouent sur le volet humain.",
+    cout: "",
+  },
+];
+
 export function Probleme() {
   return (
     <section className="relative overflow-hidden">
-      <div className="grid lg:grid-cols-2 min-h-[600px]">
 
+      {/* Split photo / text */}
+      <div className="grid lg:grid-cols-2 min-h-[600px]">
         {/* Left — photo */}
         <div className="relative min-h-[400px] lg:min-h-[600px]">
           <Image
@@ -16,8 +56,6 @@ export function Probleme() {
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/10 to-black/50 lg:to-[#0C1B2E]/80" />
-
-          {/* Bottom-left stat */}
           <div className="absolute bottom-8 left-8">
             <p className="font-display text-4xl sm:text-5xl font-light text-[#C4A46B] leading-none mb-2">6–18 mois</p>
             <p className="text-sm text-[#EDE9E3]/80">de salaire brut pour un départ cadre non anticipé</p>
@@ -31,12 +69,10 @@ export function Probleme() {
               <div className="h-px w-8 bg-[#C4A46B]" />
               <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#C4A46B]">Le problème</span>
             </div>
-
             <h2 className="font-display text-4xl sm:text-5xl font-light text-[#EDE9E3] leading-[1.1] mb-8">
               Vos RH ne pilotent pas —{" "}
               <em className="text-[#C4A46B]">elles subissent.</em>
             </h2>
-
             <div className="space-y-5 text-base text-[#9AABB8] leading-[1.85] mb-10">
               <p>
                 Turnover non maîtrisé, postes cadres vides depuis 90 jours, IRP sans interlocuteur. Dans les PME de 50 à 500 salariés, chaque mois sans pilotage RH a un coût réel — souvent découvert trop tard.
@@ -45,12 +81,45 @@ export function Probleme() {
                 Entre 30 et 500 salariés, la plupart des entreprises n'ont pas les moyens d'un DRH à temps plein. Mais elles en ont <strong className="text-[#EDE9E3] font-semibold">le besoin.</strong>
               </p>
             </div>
-
             <a href="#contact"
               className="flex items-center justify-between w-full px-8 py-5 rounded-full bg-[#C4A46B] text-[#0C1B2E] text-base font-semibold hover:bg-[#D4B47B] hover:shadow-lg hover:shadow-[#C4A46B]/25 transition-all duration-200 cursor-pointer">
               Qualifier ma situation
               <ArrowRight className="h-5 w-5" />
             </a>
+          </div>
+        </div>
+      </div>
+
+      {/* 6 signaux — grille uniforme 3×2 */}
+      <div className="bg-[#0E1F35] py-20 sm:py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="inline-flex items-center gap-2 mb-5">
+            <div className="h-px w-8 bg-[#C4A46B]" />
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#C4A46B]">Reconnaître sa situation</span>
+          </div>
+          <h2 className="font-display text-4xl sm:text-5xl font-light text-[#EDE9E3] leading-[1.1] mb-14">
+            Six signaux que votre entreprise{" "}
+            <em className="text-[#C4A46B]">a besoin d'un DRH externalisé.</em>
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {signaux.map((s) => (
+              <div key={s.n} className="glass rounded-2xl p-7 hover:bg-white/6 hover:border-[#C4A46B]/20 hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                <div className="flex items-start justify-between mb-5">
+                  <div className="w-9 h-9 rounded-lg bg-[#C4A46B]/10 border border-[#C4A46B]/20 flex items-center justify-center">
+                    <div className="w-2 h-2 rounded-full bg-[#C4A46B]/60" />
+                  </div>
+                  <span className="font-display text-3xl font-light text-[#C4A46B]/20">{s.n}</span>
+                </div>
+                <h3 className="text-base font-semibold text-[#EDE9E3] mb-3">{s.titre}</h3>
+                <p className="text-sm text-[#9AABB8] leading-[1.75] flex-1">{s.desc}</p>
+                {s.cout && (
+                  <div className="pt-4 mt-4 border-t border-white/7">
+                    <span className="text-xs text-[#C4A46B]/70 italic">→ {s.cout}</span>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
