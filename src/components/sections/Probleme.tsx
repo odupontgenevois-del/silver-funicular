@@ -104,7 +104,7 @@ export function Probleme() {
             <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#C4A46B]">Reconnaître sa situation</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-light text-[#EDE9E3] leading-[1.1] mb-14">
-            Six signaux que votre entreprise{" "}
+            6 signaux que votre entreprise{" "}
             <em className="text-[#C4A46B]">a besoin d'un DRH externalisé.</em>
           </h2>
 
