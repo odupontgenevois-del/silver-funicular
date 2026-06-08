@@ -1,40 +1,46 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, TrendingDown, Scale, Clock, MessageSquareOff, Network, Blocks } from "lucide-react";
 
 const signaux = [
   {
     n: "01",
-    titre: "Turnover non maîtrisé",
+    icon: TrendingDown,
+    titre: "TURNOVER NON MAÎTRISÉ",
     desc: "Vos postes cadres se vident plus vite que vous ne les remplissez. Chaque départ entraîne perte de mémoire organisationnelle et coût de recrutement.",
     cout: "Coût moyen : 6 à 18 mois de salaire brut par départ non anticipé",
   },
   {
     n: "02",
-    titre: "Risque légal sous-estimé",
+    icon: Scale,
+    titre: "RISQUE LÉGAL SOUS-ESTIMÉ",
     desc: "Redressement URSSAF, contentieux prud'homal, accord collectif non conforme. Sans DRH, les obligations légales deviennent des risques financiers.",
     cout: "",
   },
   {
     n: "03",
-    titre: "Postes critiques vides",
+    icon: Clock,
+    titre: "POSTES CRITIQUES VIDES",
     desc: "Vos postes stratégiques restent ouverts plus de 60 jours. L'organisation se fragmente. Les équipes compensent jusqu'à l'épuisement.",
     cout: "",
   },
   {
     n: "04",
-    titre: "IRP sans interlocuteur",
+    icon: MessageSquareOff,
+    titre: "IRP SANS INTERLOCUTEUR",
     desc: "Vos représentants du personnel n'ont pas de DRH à qui parler. Le dialogue social se dégrade en silence, jusqu'au conflit ouvert.",
     cout: "",
   },
   {
     n: "05",
-    titre: "Management non structuré",
+    icon: Network,
+    titre: "MANAGEMENT NON STRUCTURÉ",
     desc: "Vos managers décident sans cadre RH. Les pratiques divergent selon les équipes. L'équité interne se dégrade et les conflits s'accumulent.",
     cout: "",
   },
   {
     n: "06",
-    titre: "Transformation bloquée",
+    icon: Blocks,
+    titre: "TRANSFORMATION BLOQUÉE",
     desc: "Acquisition, fusion, restructuration, déploiement SIRH. Sans pilotage RH, les transformations s'enlisent ou échouent sur le volet humain.",
     cout: "",
   },
@@ -103,23 +109,26 @@ export function Probleme() {
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {signaux.map((s) => (
-              <div key={s.n} className="glass rounded-2xl p-7 hover:bg-white/6 hover:border-[#C4A46B]/20 hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                <div className="flex items-start justify-between mb-5">
-                  <div className="w-9 h-9 rounded-lg bg-[#C4A46B]/10 border border-[#C4A46B]/20 flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-[#C4A46B]/60" />
+            {signaux.map((s) => {
+              const Icon = s.icon;
+              return (
+                <div key={s.n} className="glass rounded-2xl p-7 hover:bg-white/6 hover:border-[#C4A46B]/20 hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="w-10 h-10 rounded-xl bg-[#C4A46B]/10 border border-[#C4A46B]/20 flex items-center justify-center">
+                      <Icon className="h-5 w-5 text-[#C4A46B]" />
+                    </div>
+                    <span className="font-display text-3xl font-light text-[#C4A46B]/20">{s.n}</span>
                   </div>
-                  <span className="font-display text-3xl font-light text-[#C4A46B]/20">{s.n}</span>
+                  <h3 className="text-xs font-semibold tracking-[0.12em] text-[#EDE9E3] mb-3">{s.titre}</h3>
+                  <p className="text-sm text-[#9AABB8] leading-[1.75] flex-1">{s.desc}</p>
+                  {s.cout && (
+                    <div className="pt-4 mt-4 border-t border-white/7">
+                      <span className="text-xs text-[#C4A46B]/70 italic">→ {s.cout}</span>
+                    </div>
+                  )}
                 </div>
-                <h3 className="text-base font-semibold text-[#EDE9E3] mb-3">{s.titre}</h3>
-                <p className="text-sm text-[#9AABB8] leading-[1.75] flex-1">{s.desc}</p>
-                {s.cout && (
-                  <div className="pt-4 mt-4 border-t border-white/7">
-                    <span className="text-xs text-[#C4A46B]/70 italic">→ {s.cout}</span>
-                  </div>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
