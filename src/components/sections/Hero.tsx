@@ -11,6 +11,7 @@ const kpis = [
   { from: 0,    to: -30,  suffix: "%",    sign: "show", label: "Time-to-fill",         sub: "Camfil 2017–2023" },
   { from: 0,    to: 4,    suffix: " CCN", sign: "none", label: "Sites harmonisés",     sub: "Camfil 2018–2019" },
   { from: 2000, to: 2019, suffix: "",     sign: "none", label: "Prix ONU · New York",  sub: "Diversité · 17 pays" },
+  { from: 0,    to: 17,   suffix: " pays",sign: "none", label: "Politique GEEIS",      sub: "3 continents" },
 ];
 
 const situations = [
@@ -175,7 +176,7 @@ export function Hero() {
       {/* KPIs strip */}
       <section className="bg-[#0C1B2E] border-b border-white/7">
         <div className="mx-auto max-w-6xl px-6 py-10">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {kpis.map((k) => (
               <AnimatedKpi key={k.label} from={k.from} to={k.to} suffix={k.suffix} sign={k.sign} label={k.label} sub={k.sub} />
             ))}
